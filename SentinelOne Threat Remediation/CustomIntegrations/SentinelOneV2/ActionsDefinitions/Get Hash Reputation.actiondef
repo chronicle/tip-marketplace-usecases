@@ -1,0 +1,26 @@
+{
+  "Name": "Get Hash Reputation",
+  "Description": "Feth hash reputation.",
+  "Script": "from SiemplifyUtils import output_handler\nfrom SiemplifyAction import SiemplifyAction\nfrom SentinelOneV2Manager import SentinelOneV2Manager\nfrom SiemplifyDataModel import EntityTypes\nfrom SiemplifyUtils import add_prefix_to_dict_keys, dict_to_flat, flat_dict_to_csv\nfrom TIPCommon import extract_configuration_param\n\n\n# Consts.\nINTEGRATION_NAME = u'SentinelOneV2'\nSCRIPT_NAME = u'Get Hash Reputation'\nFILEHASH = EntityTypes.FILEHASH\n\n\n@output_handler\ndef main():\n    # Define Variables.\n    entities_successed = []\n    result_value = False\n\n    # Configuration.\n    siemplify = SiemplifyAction()\n    siemplify.script_name = u\"{} - {}\".format(INTEGRATION_NAME, SCRIPT_NAME)\n    siemplify.LOGGER.info(u\"================= Main - Param Init =================\")\n\n    api_root = extract_configuration_param(siemplify, provider_name=INTEGRATION_NAME, param_name=u\"Api Root\",\n                                           is_mandatory=True, input_type=unicode)\n    api_token = extract_configuration_param(siemplify, provider_name=INTEGRATION_NAME, param_name=u\"API Token\",\n                                            is_mandatory=True, input_type=unicode)\n    verify_ssl = extract_configuration_param(siemplify, provider_name=INTEGRATION_NAME, param_name=u\"Verify SSL\",\n                                             default_value=False, input_type=bool)\n\n    siemplify.LOGGER.info(u\"----------------- Main - Started -----------------\")\n\n    sentinel_one_manager = SentinelOneV2Manager(api_root, api_token, verify_ssl)\n\n    # Get scope entities.\n    scope_entities = [entity for entity in siemplify.target_entities if entity.entity_type == FILEHASH]\n\n    # Run on entities.\n    for entity in scope_entities:\n        siemplify.LOGGER.info(u\"Processing entity {}\".format(entity.identifier))\n\n        hash_reputation = sentinel_one_manager.get_hash_reputation(entity.identifier.lower())\n        if hash_reputation:\n            siemplify.LOGGER.info(u\"Found reputation for entity {}\".format(entity.identifier))\n            entities_successed.append(entity)\n            result_value = True\n\n            # # Organize output.\n            # hash_reputation_flat = dict_to_flat(hash_reputation)\n            # csv_output = flat_dict_to_csv(hash_reputation_flat)\n            # # Add entity table.\n            # siemplify.result.add_entity_table(entity.identifier, csv_output)\n\n            # Enrich entity.\n            entity.additional_properties.update({u\"SentinelOneV2_reputation\": hash_reputation})\n\n        else:\n            siemplify.LOGGER.info(u\"No reputation was found for entity {}\".format(entity.identifier))\n\n    if entities_successed:\n        output_message = u'Found hash reputation for: {0}'.format(u\", \".join([entity.identifier for entity\n                                                                             in entities_successed]))\n        siemplify.update_entities(entities_successed)\n\n    else:\n        output_message = u'No hash reputation found for target entities.'\n\n    siemplify.update_entities(entities_successed)\n    siemplify.end(output_message, result_value)\n\n\nif __name__ == '__main__':\n    main()\n\n\n\n",
+  "IntegrationIdentifier": "SentinelOneV2",
+  "ScriptResultName": "is_success",
+  "DynamicResultsMetadata": [
+    {
+      "ResultName": "JsonResult",
+      "ResultExample": null,
+      "ShowResult": false
+    }
+  ],
+  "Creator": "Admin",
+  "IsEnabled": true,
+  "IsCustom": true,
+  "IsSystem": false,
+  "Version": 3.0,
+  "TimeoutSeconds": 600,
+  "Parameters": [],
+  "DefaultResultValue": null,
+  "PythonVersion": "None",
+  "Id": 0,
+  "CreationTimeUnixTimeInMs": 1590921554713,
+  "ModificationTimeUnixTimeInMs": 1590921554726
+}

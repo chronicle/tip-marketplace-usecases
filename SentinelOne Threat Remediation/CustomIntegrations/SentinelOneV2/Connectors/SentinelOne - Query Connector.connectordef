@@ -1,0 +1,191 @@
+{
+  "IsEnabled": true,
+  "IsCustom": true,
+  "Integration": "SentinelOneV2",
+  "DocumentationLink": null,
+  "Name": "SentinelOne - Query Connector",
+  "Description": "Fetch events for queries.",
+  "Creator": "Admin",
+  "Script": "from SiemplifyUtils import output_handler\n# ==============================================================================\n# title           :QueryConnector.py\n# description     :This Module contain SentinelOneV2 query Connector logic.\n# author          :victor@siemplify.co\n# date            :28-11-2018\n# python_version  :2.7\n# libraries       : -\n# requirements    :\n# product_version : Eiffel\n# ==============================================================================\n# =====================================\n#              IMPORTS                #\n# =====================================\nfrom SentinelOneV2Manager import SentinelOneV2Manager, SentinelOneV2ApiLimitError\nfrom SiemplifyConnectors import SiemplifyConnectorExecution, CaseInfo\nfrom SiemplifyUtils import convert_unixtime_to_datetime, utc_now, unix_now, convert_datetime_to_unix_time\nfrom TIPCommon import extract_connector_param\nfrom EnvironmentCommon import EnvironmentHandle\nimport datetime\nimport time\nimport arrow\nimport uuid\nimport json\nimport sys\nimport os\n\n# =====================================\n#             CONSTANTS               #\n# =====================================\nMAP_FILE = u\"map.json\"\nTIMELINE_FILE = u\"timeline.json\"\nIDS_FILE = u\"ids.json\"\nSEVERITY_KEY = u\"Severity:::\"\nQUERY_KEY = u\"Query:::\"\n\nSEVERITIES = {\n    u\"Critical\": 100,\n    u\"High\": 80,\n    u\"Medium\": 60,\n    u\"Low\": 40,\n    u\"Info\": -1\n}\n\nDEFAULT_PRODUCT = u'SentinelOne'\nDEFAULT_VENDOR = u'SentinelOne'\n\nALERT_WITHOUT_A_NAME_DEFAULT = u'Alert has no name.'\nALERT_NAME_FORMAT = u\"SentinelOne Query: {} Alert\"\nALERT_DESCRIPTION_FORMAT = u\"Alert generated based on the events found by executing SentinelOne Query: {}\"\n\n\n# =====================================\n#              CLASSES                #\n# =====================================\n\n\nclass SentinelOneV2QueryConnectorError(Exception):\n    pass\n\n\nclass SentinelOneV2QueryConnector(object):\n    def __init__(self, connector_scope, environment_field_name, environment_regex):\n        self.connector_scope = connector_scope\n        self.logger = connector_scope.LOGGER\n\n        map_file_path = os.path.join(connector_scope.run_folder, MAP_FILE)\n        connector_scope.LOGGER.info(u\"Validating environments mapping file at: {}\".format(map_file_path))\n        self.validate_map_file(map_file_path)\n\n        connector_scope.LOGGER.info(u\"Loading EnvironmentCommon\")\n        self.environment_common = EnvironmentHandle(map_file_path, self.logger, environment_field_name,\n                                                    environment_regex,\n                                                    connector_scope.context.connector_info.environment)\n\n    def validate_map_file(self, map_file_path):\n        \"\"\"\n        Validate the existence of the environment mapping file\n        :param map_file_path: {str} The path to the map file\n        \"\"\"\n        try:\n            if not os.path.exists(map_file_path):\n                with open(map_file_path, 'w+') as map_file:\n                    map_file.write(json.dumps(\n                        {u\"Original environment name\": u\"Desired environment name\",\n                         u\"Env1\": u\"MyEnv1\"}))\n                    self.logger.info(\n                        u\"Mapping file was created at {}\".format(map_file_path)\n                    )\n\n        except Exception as e:\n            self.logger.error(u\"Unable to create mapping file: {}\".format(e))\n            self.logger.exception(e)\n\n    @staticmethod\n    def validate_timestamp(last_run_timestamp, offset_in_hours):\n        \"\"\"\n        Validate timestamp in range\n        :param last_run_timestamp: {datetime} last run timestamp\n        :param offset_in_hours: The max offset allowed in hours\n         offset: {datetime} last run timestamp\n        :return: {datetime} if first run, return current time minus offset time, else return timestamp from file\n        \"\"\"\n        current_time = utc_now()\n        # Check if first run\n        if current_time - last_run_timestamp > datetime.timedelta(hours=offset_in_hours):\n            return current_time - datetime.timedelta(hours=offset_in_hours)\n        else:\n            return last_run_timestamp\n\n    def read_timelines(self, queries):\n        \"\"\"\n        Read timelines from the timeline.json file\n        :param queries: {list} List of parsed queries to fetch timelines for\n        :return:{dict} A dict describing the already seen ids {id: the unixtime when it was first seen}\n        \"\"\"\n        timeline_file_path = os.path.join(self.connector_scope.run_folder, TIMELINE_FILE)\n        self.logger.info(u\"Fetching timeline from: {0}\".format(timeline_file_path))\n\n        try:\n            if not os.path.exists(timeline_file_path):\n                self.logger.info(u\"Timeline file doesn't exist at path {}\".format(timeline_file_path))\n                return {}\n\n            with open(timeline_file_path, 'r') as f:\n                self.logger.info(u\"Reading timetamps from timeline file\")\n                timestamps = json.loads(f.read())\n\n                filtered_timestamps = {}\n                # Insert IDs that did not passed time retention time limit.\n                for query, timestamp in timestamps.items():\n                    if query in queries:\n                        filtered_timestamps[query] = timestamp\n\n                return filtered_timestamps\n\n        except Exception as e:\n            self.logger.error(u\"Unable to read timeline file: {}\".format(e))\n            self.logger.exception(e)\n            return {}\n\n    def write_timelines(self, timeline_file_path, timestamps):\n        \"\"\"\n        Write timestamps to the timeline file\n        :param timeline_file_path: {str} The path of the timeline file.\n        :param timestamps: {dict} The timestamps to write to the file\n        \"\"\"\n        try:\n            self.logger.info(u\"Writing timestamps to file: {}\".format(timeline_file_path))\n\n            if not os.path.exists(os.path.dirname(timeline_file_path)):\n                self.logger.info(u\"Timeline file doesn't exist at {}. Creating new file.\".format(timeline_file_path))\n                os.makedirs(os.path.dirname(timeline_file_path))\n\n            with open(timeline_file_path, 'w') as f:\n                try:\n                    for chunk in json.JSONEncoder().iterencode(timestamps):\n                        f.write(chunk)\n                except:\n                    # Move seeker to start of the file\n                    f.seek(0)\n                    # Empty the content of the file (the partially written content that was written before the exception)\n                    f.truncate()\n                    # Write an empty dict to the events data file\n                    f.write(\"{}\")\n                    raise\n\n        except Exception as e:\n            self.logger.error(u\"Failed writing timestamps to timeline file, ERROR: {0}\".format(e))\n            self.logger.exception(e)\n\n    def read_ids(self, cast_keys_to_int=False, max_hours_backwards=24):\n        \"\"\"\n        Read existing (arleady seen) alert ids from the ids.json file\n        :param cast_keys_to_int: {bool} Whether to case the ids to int or not\n        :param max_hours_backwards: {int} Max amount of hours to keep ids in the file (to prevent it from getting too big)\n        :return:{dict} A dict describing the already seen ids {id: the unixtime when it was first seen}\n        \"\"\"\n        ids_file_path = os.path.join(self.connector_scope.run_folder, IDS_FILE)\n        self.logger.info(u\"Fetching existing IDs from: {0}\".format(ids_file_path))\n\n        try:\n            if not os.path.exists(ids_file_path):\n                self.logger.info(u\"Ids file doesn't exist at path {}\".format(ids_file_path))\n                return {}\n\n            with open(ids_file_path, 'r') as f:\n                self.logger.info(u\"Reading existing ids from ids file\")\n                existing_ids = json.loads(f.read())\n\n                filtered_ids = {}\n                # Insert IDs that did not passed time retention time limit.\n                for alert_id, timestamp in existing_ids.items():\n                    if timestamp > arrow.utcnow().shift(hours=-max_hours_backwards).timestamp * 1000:\n                        filtered_ids[alert_id] = timestamp\n\n                if cast_keys_to_int:\n                    return {int(k): v for k, v in filtered_ids.items()}\n\n                return filtered_ids\n\n        except Exception as e:\n            self.logger.error(u\"Unable to read ids file: {}\".format(e))\n            self.logger.exception(e)\n            return {}\n\n    def write_ids(self, ids_file_path, ids):\n        \"\"\"\n        Write ids to the ids file\n        :param ids_file_path: {str} The path of the ids file.\n        :param ids: {dict} The ids to write to the file\n        \"\"\"\n        try:\n            self.logger.info(u\"Writing ids to file: {}\".format(ids_file_path))\n\n            if not os.path.exists(os.path.dirname(ids_file_path)):\n                self.logger.info(u\"Ids file doesn't exist at {}. Creating new file.\".format(ids_file_path))\n                os.makedirs(os.path.dirname(ids_file_path))\n\n            with open(ids_file_path, 'w') as f:\n                try:\n                    for chunk in json.JSONEncoder().iterencode(ids):\n                        f.write(chunk)\n                except:\n                    # Move seeker to start of the file\n                    f.seek(0)\n                    # Empty the content of the file (the partially written content that was written before the exception)\n                    f.truncate()\n                    # Write an empty dict to the events data file\n                    f.write(\"{}\")\n                    raise\n\n        except Exception as e:\n            self.logger.error(u\"Failed writing IDs to IDs file, ERROR: {0}\".format(e))\n            self.logger.exception(e)\n\n    def filter_old_ids(self, alert_ids, existing_ids):\n        \"\"\"\n        Filter ids that were already processed\n        :param alert_ids: {list} The ids to filter\n        :param existing_ids: {list} The ids to filter\n        :return: {list} The filtered ids\n        \"\"\"\n        new_alert_ids = []\n\n        for correlated_event_id in alert_ids:\n            if correlated_event_id not in existing_ids.keys():\n                new_alert_ids.append(correlated_event_id)\n\n        return new_alert_ids\n\n    def parse_queries(self, queries):\n        \"\"\"\n        Parse the list of queries\n        :param queries: {list} List of unicode query + severity queries, in the following format:\n            Query::: ProcessImagePath CONTAINS \"windows\" Severity::: Medium\n        :return: {list} List of parsed queries (tuples) - (parsed query, severity)\n        \"\"\"\n        parsed_queries = []\n\n        for query in queries:\n            self.logger.info(u\"Parsing query: {}\".format(query))\n\n            if SEVERITY_KEY not in query:\n                self.logger.info(u\"\\\"Severity:::\\\" key is missing. Medium will be used.\")\n                severity = SEVERITIES[u\"Medium\"]\n                split_query = query\n            else:\n                split_query, severity_name = query.rsplit(SEVERITY_KEY, 1)\n                severity_name = severity_name.strip()\n\n                if severity_name not in SEVERITIES.keys():\n                    self.logger.info(\n                        u\"Parsed severity \\\"{}\\\" is invalid. Valid severities are Critical, High, Medium, Low, Info. Medium will be used.\")\n                    severity = SEVERITIES[u\"Medium\"]\n\n                else:\n                    severity = SEVERITIES[severity_name]\n                    self.logger.info(u\"Parsed severity: {} ({})\".format(severity, severity_name))\n\n            if QUERY_KEY not in split_query:\n                self.logger.info(u\"\\\"Query:::\\\" key is missing. Current query will be skipped: {}\".format(query))\n                continue\n\n            parsed_query = split_query.split(QUERY_KEY)[-1]\n            self.logger.info(u\"Parsed query: {}\".format(parsed_query))\n            parsed_queries.append((parsed_query, severity))\n\n        return parsed_queries\n\n    def create_case(self, events, query, severity, device_product_field):\n        \"\"\"\n        Create a case object.\n        :return: {CaseInfo}\n        \"\"\"\n        case_info = CaseInfo()\n        sorted_events = sorted(events, key=lambda event: event.created_at)\n\n        case_info.start_time = sorted_events[0].creation_time_unix_time\n        case_info.end_time = sorted_events[-1].creation_time_unix_time\n        case_info.device_product = sorted_events[0].raw_data.get(device_product_field, DEFAULT_PRODUCT)\n        case_info.name = ALERT_NAME_FORMAT.format(query)\n        case_info.ticket_id = sorted_events[0].uuid or u\"{0}_{1}\".format(case_info.start_time, unicode(uuid.uuid4()))\n        case_info.priority = severity\n        case_info.description = ALERT_DESCRIPTION_FORMAT.format(query)\n        case_info.environment = self.environment_common.get_environment(sorted_events[0].raw_data)\n        case_info.rule_generator = query\n        case_info.device_vendor = DEFAULT_VENDOR\n        case_info.display_id = case_info.identifier = case_info.ticket_id\n        case_info.events = [event.to_event() for event in events]\n\n        return case_info\n\n\n@output_handler\ndef main(test_handler=False):\n    connector_scope = SiemplifyConnectorExecution()\n    output_variables = {}\n    log_items = []\n    all_cases = []\n    cases = []\n\n    try:\n        if test_handler:\n            connector_scope.LOGGER.info(u\" ------------ Starting SentinelOneV2 Query Connector test. ------------ \")\n        else:\n            connector_scope.LOGGER.info(u\" ------------ Starting Connector. ------------ \")\n\n        api_root = extract_connector_param(connector_scope, u\"API Root\", is_mandatory=True)\n        api_token = extract_connector_param(connector_scope, u\"API Token\", is_mandatory=True)\n        verify_ssl = extract_connector_param(connector_scope, u\"Verify SSL\", is_mandatory=True, input_type=bool)\n        max_hours_backwards = extract_connector_param(connector_scope, param_name=u\"Max Hour Backwards\",\n                                                      is_mandatory=False, default_value=1, input_type=int,\n                                                      print_value=True)\n        events_limit = extract_connector_param(connector_scope, param_name=u\"Event Count Limit\", is_mandatory=False,\n                                               default_value=50, input_type=int, print_value=True)\n        device_product_field = extract_connector_param(connector_scope, u\"DeviceProductField\", is_mandatory=True)\n        environment_field_name = extract_connector_param(connector_scope, param_name=u\"Environment Field Name\",\n                                                         is_mandatory=False, input_type=unicode, print_value=True)\n        environment_regex = extract_connector_param(connector_scope, param_name=u\"Environment Regex Pattern\",\n                                                    is_mandatory=False, input_type=unicode, print_value=True)\n\n        queries = connector_scope.whitelist\n\n        sentinel_manager = SentinelOneV2Manager(api_root, api_token, verify_ssl, logger=connector_scope.LOGGER)\n        sentinel_connector = SentinelOneV2QueryConnector(connector_scope, environment_field_name, environment_regex)\n\n        if not queries:\n            connector_scope.LOGGER.error(u\"Please add SentinelOne queries to the whitelist.\")\n            raise Exception(u\"Please add SentinelOne queries to the whitelist\")\n\n        connector_scope.LOGGER.info(u\"Parsing {} queries.\".format(len(queries)))\n        parsed_queries = sentinel_connector.parse_queries(queries)\n\n        if not parsed_queries:\n            connector_scope.LOGGER.error(\n                u\"No valid queries were parsed. Please add valid SentinelOne queries to the whitelist.\")\n            raise Exception(u\"No valid queries were parsed. Please add valid SentinelOne queries to the whitelist.\")\n\n        fallback_timestamp = arrow.utcnow().shift(hours=-max_hours_backwards).datetime\n        to_date = unix_now()\n\n        existing_ids = sentinel_connector.read_ids(max_hours_backwards=72)\n        # Get the existing timestamps dict for the current queries\n        timestamps = sentinel_connector.read_timelines([parsed_query[0] for parsed_query in parsed_queries])\n\n        for query, severity in parsed_queries:\n            connector_scope.LOGGER.info(u'Running query \"{}\".'.format(query))\n            try:\n                if query not in timestamps:\n                    # Current query doesn't have a timestamp in the timeline file\n                    connector_scope.LOGGER.info(\n                        u\"Query \\\"{}\\\" doesnt have a timestamp in the timeline file. Setting to fallback timestamp: {}\".format(\n                            query, fallback_timestamp.isoformat())\n                    )\n                    query_last_run_timestamp = convert_datetime_to_unix_time(fallback_timestamp)\n\n                else:\n                    query_last_run_timestamp = timestamps[query]\n\n                connector_scope.LOGGER.info(u\"Running query from {} to {}\".format(\n                    convert_unixtime_to_datetime(query_last_run_timestamp),\n                    convert_unixtime_to_datetime(to_date)\n                ))\n\n                query_id = sentinel_manager.initialize_query(\n                    query=query,\n                    from_date=query_last_run_timestamp,\n                    to_date=to_date\n                )\n\n                connector_scope.LOGGER.info(\n                    u\"Successfully initialized query {} fetching query. Query ID: {}. Pending for query to finish.\".format(\n                        query, query_id)\n                )\n\n                while not sentinel_manager.is_query_completed(query_id):\n                    connector_scope.LOGGER.info(u\"Query {} is not finished yet. Waiting.\".format(query_id))\n                    time.sleep(1)\n\n                if sentinel_manager.is_query_failed(query_id):\n                    connector_scope.LOGGER.error(\n                        u\"Query {} has failed with status {}.\".format(\n                            query_id,\n                            sentinel_manager.get_query_status(query_id)\n                        )\n                    )\n                    continue\n\n                if not sentinel_manager.is_query_has_results(query_id):\n                    connector_scope.LOGGER.info(u\"Query {} completed but not events were found.\".format(query_id))\n                    continue\n\n                connector_scope.LOGGER.info(u\"Query {} completed. Collecting events.\".format(query_id))\n\n                try:\n                    if test_handler:\n                        events = sentinel_manager.get_all_events_by_query_id(query_id, limit=1, existing_hashes=existing_ids)\n                    else:\n                        events = sentinel_manager.get_all_events_by_query_id(query_id, limit=events_limit,\n                                                                             existing_hashes=existing_ids)\n                except SentinelOneV2ApiLimitError as e:\n                    connector_scope.LOGGER.error(e)\n                    # Increase the timestamp of the query by 1ms to advance the connector\n                    if query in timestamps:\n                        timestamps[query] = timestamps[query] + 1\n                    else:\n                        # Cant really get in here (cause if all 1000 events were already seen, then we must have a\n                        # timestamp. But if some catastrophe happened and timeline.json got deleted but ids.json\n                        # did not, then just set it to fallback timestamp to avoid the connector from crushing\n                        timestamps[query] = convert_datetime_to_unix_time(fallback_timestamp)\n                    connector_scope.LOGGER.info(\n                        u\"Setting query \\\"{}\\\" to: {}\".format(query, convert_unixtime_to_datetime(timestamps[query]))\n                    )\n\n                    break\n\n                if not events:\n                    connector_scope.LOGGER.info(\n                        u\"No new events were found for query {}. No case will be created.\".format(query_id)\n                    )\n                    continue\n\n                connector_scope.LOGGER.info(u'Found {} new events for query {}'.format(len(events), query_id))\n\n                connector_scope.LOGGER.info(u'Creating case for query \"{}\"'.format(query))\n                case = sentinel_connector.create_case(\n                    events,\n                    query=query,\n                    severity=severity,\n                    device_product_field=device_product_field\n                )\n\n                # Set the timestamp of the query to the case.end_time = the createdAt timestamp of the newest processed\n                # event\n                connector_scope.LOGGER.info(\n                    u\"Query \\\"{}\\\" new timestamp: {}\".format(query, convert_unixtime_to_datetime(case.end_time))\n                )\n                timestamps[query] = case.end_time\n                all_cases.append(case)\n\n                for event in events:\n                    # Add the found events to the existing_ids dict and ids.json to stop the connector from fetching\n                    # them again in the future\n                    existing_ids.update({event.to_hash(): unix_now()})\n\n                is_overflowed = False\n\n                try:\n                    is_overflowed = connector_scope.is_overflowed_alert(\n                        environment=case.environment,\n                        alert_identifier=case.ticket_id,\n                        alert_name=case.rule_generator,\n                        product=case.device_product\n                    )\n\n                except Exception as err:\n                    connector_scope.LOGGER.error(\n                        u'Error validation connector overflow, ERROR: {}'.format(err))\n                    connector_scope.LOGGER.exception(err)\n                    if test_handler:\n                        raise\n\n                if is_overflowed:\n                    connector_scope.LOGGER.info(\n                        u\"{alert_name}-{alert_identifier}-{environment}-{product} found as overflow alert. Skipping.\"\n                            .format(alert_name=unicode(case.rule_generator),\n                                    alert_identifier=unicode(case.ticket_id),\n                                    environment=unicode(case.environment),\n                                    product=unicode(case.device_product)))\n                else:\n                    cases.append(case)\n                    connector_scope.LOGGER.info(u'Case with display id {} was created.'.format(case.display_id))\n\n            except Exception as err:\n                error_message = u\"Failed fetching events and creating case for query \\\"{}\\\"\".format(query)\n                connector_scope.LOGGER.error(error_message)\n                connector_scope.LOGGER.exception(err)\n\n                if test_handler:\n                    raise\n\n        connector_scope.LOGGER.info(u\"Created {} cases.\".format(len(cases)))\n\n        if not test_handler and all_cases:\n            sentinel_connector.write_ids(os.path.join(connector_scope.run_folder, IDS_FILE), existing_ids)\n            sentinel_connector.write_timelines(os.path.join(connector_scope.run_folder, TIMELINE_FILE), timestamps)\n\n        if test_handler:\n            connector_scope.LOGGER.info(u\" ------------ Complete SentinelOneV2 Query Connector test. ------------ \")\n        else:\n            connector_scope.LOGGER.info(u\" ------------ Complete Connector Iteration. ------------ \")\n\n        connector_scope.return_package(cases, output_variables, log_items)\n\n    except Exception as err:\n        connector_scope.LOGGER.error(u'Got exception on main handler. Error: {0}'.format(err))\n        connector_scope.LOGGER.exception(err)\n        if test_handler:\n            raise\n\n\nif __name__ == u\"__main__\":\n    if len(sys.argv) < 2 or sys.argv[1] == u'True':\n        print u\"Main execution started\"\n        main()\n    else:\n        print u\"Test execution started\"\n        main(test_handler=True)\n",
+  "Version": 12,
+  "MappingRules": [],
+  "ProductToVisualFamilyRecords": [],
+  "SimulationUseCases": {
+    "CasesForUseCase": [],
+    "UseCaseName": null
+  },
+  "Parameters": [
+    {
+      "ConnectorDefinitionId": 3,
+      "IsMandatory": false,
+      "DefaultValue": null,
+      "Name": "Proxy Password",
+      "Type": 3,
+      "Mode": 2,
+      "Description": "The proxy password to authenticate with.",
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1590908125499,
+      "ModificationTimeUnixTimeInMs": 1590908125499
+    },
+    {
+      "ConnectorDefinitionId": 3,
+      "IsMandatory": false,
+      "DefaultValue": null,
+      "Name": "Proxy Username",
+      "Type": 2,
+      "Mode": 2,
+      "Description": "The proxy username to authenticate with.",
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1590908125499,
+      "ModificationTimeUnixTimeInMs": 1590908125499
+    },
+    {
+      "ConnectorDefinitionId": 3,
+      "IsMandatory": false,
+      "DefaultValue": null,
+      "Name": "Proxy Server Address",
+      "Type": 2,
+      "Mode": 2,
+      "Description": "The address of the proxy server to use.",
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1590908125499,
+      "ModificationTimeUnixTimeInMs": 1590908125499
+    },
+    {
+      "ConnectorDefinitionId": 3,
+      "IsMandatory": false,
+      "DefaultValue": ".*",
+      "Name": "Environment Regex Pattern",
+      "Type": 2,
+      "Mode": 2,
+      "Description": "A regex pattern to run on the value found in the \"Environment Field Name\" field. Default is .* to catch all and return value unchanged. Used to allow the user to manipulate the environment field via regex logic. If regex pattern is null or empty, or the environment value is null, the final environment result is \"\".",
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1590908125499,
+      "ModificationTimeUnixTimeInMs": 1590908125499
+    },
+    {
+      "ConnectorDefinitionId": 3,
+      "IsMandatory": false,
+      "DefaultValue": "",
+      "Name": "Environment Field Name",
+      "Type": 2,
+      "Mode": 2,
+      "Description": "Describes the name of the field where the environment name is stored. If environment field isn't found, environment is \"\".",
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1590908125499,
+      "ModificationTimeUnixTimeInMs": 1590908125499
+    },
+    {
+      "ConnectorDefinitionId": 3,
+      "IsMandatory": false,
+      "DefaultValue": "1",
+      "Name": "Max Hour Backwards",
+      "Type": 1,
+      "Mode": 2,
+      "Description": "Amount of hours from where to fetch events.",
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1590908125499,
+      "ModificationTimeUnixTimeInMs": 1590908125499
+    },
+    {
+      "ConnectorDefinitionId": 3,
+      "IsMandatory": false,
+      "DefaultValue": "50",
+      "Name": "Event Count Limit",
+      "Type": 1,
+      "Mode": 2,
+      "Description": "Limit the number of events returned by the connector per 1 query. Note: SentinelOne allows maximum 1000 events per 1 query.",
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1590908125499,
+      "ModificationTimeUnixTimeInMs": 1590908125499
+    },
+    {
+      "ConnectorDefinitionId": 3,
+      "IsMandatory": false,
+      "DefaultValue": "TRUE",
+      "Name": "Verify SSL",
+      "Type": 0,
+      "Mode": 2,
+      "Description": "If enabled, verify the SSL certificate for the connection to the Sentinel public cloud server is valid.",
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1590908125499,
+      "ModificationTimeUnixTimeInMs": 1590908125499
+    },
+    {
+      "ConnectorDefinitionId": 3,
+      "IsMandatory": true,
+      "DefaultValue": "",
+      "Name": "API Token",
+      "Type": 3,
+      "Mode": 2,
+      "Description": "SentinelOne API token.",
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1590908125499,
+      "ModificationTimeUnixTimeInMs": 1590908125499
+    },
+    {
+      "ConnectorDefinitionId": 3,
+      "IsMandatory": true,
+      "DefaultValue": "",
+      "Name": "API Root",
+      "Type": 2,
+      "Mode": 2,
+      "Description": "Address of SentinelOne API root.",
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1590908125499,
+      "ModificationTimeUnixTimeInMs": 1590908125499
+    },
+    {
+      "ConnectorDefinitionId": 3,
+      "IsMandatory": true,
+      "DefaultValue": "180",
+      "Name": "PythonProcessTimeout",
+      "Type": 2,
+      "Mode": 0,
+      "Description": "Timeout limit for the python process running the current script.",
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1590908125499,
+      "ModificationTimeUnixTimeInMs": 1590908125499
+    },
+    {
+      "ConnectorDefinitionId": 3,
+      "IsMandatory": false,
+      "DefaultValue": "eventType",
+      "Name": "EventClassId",
+      "Type": 2,
+      "Mode": 0,
+      "Description": "Describes the name of the field where the event name is stored.",
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1590908125499,
+      "ModificationTimeUnixTimeInMs": 1590908125499
+    },
+    {
+      "ConnectorDefinitionId": 3,
+      "IsMandatory": true,
+      "DefaultValue": "product_field",
+      "Name": "DeviceProductField",
+      "Type": 2,
+      "Mode": 0,
+      "Description": "Describes the name of the field where the product name is stored.",
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1590908125499,
+      "ModificationTimeUnixTimeInMs": 1590908125499
+    }
+  ],
+  "Rules": [
+    {
+      "ConnectorDefinitionId": 3,
+      "RuleType": 0,
+      "RuleName": "Query::: ProcessImagePath CONTAINS \"windows\" Severity::: Medium",
+      "Id": 19,
+      "CreationTimeUnixTimeInMs": 1590908125515,
+      "ModificationTimeUnixTimeInMs": 1590908125515
+    }
+  ],
+  "IsConnectorRulesSupported": false,
+  "IsSystem": false,
+  "PythonVersion": "None",
+  "Id": 0,
+  "CreationTimeUnixTimeInMs": 1588021981863,
+  "ModificationTimeUnixTimeInMs": 1590908125492
+}

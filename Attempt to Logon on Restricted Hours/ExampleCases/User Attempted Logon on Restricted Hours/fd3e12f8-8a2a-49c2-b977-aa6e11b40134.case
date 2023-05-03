@@ -1,0 +1,56 @@
+{
+  "Cases": [
+    {
+      "Events": [
+        {
+          "_fields": {
+            "BaseEventIds": [],
+            "ParentEventId": 0,
+            "DeviceEventClassId": "User Attempted Logon on Restricted Hours",
+            "StartTime": "1587017841628",
+            "EndTime": "1587017841628",
+            "DeviceProduct": "ElasticStack"
+          },
+          "_rawDataFields": {
+            "winlog.event_data.LogonType": "7",
+            "winlog.event_data.TargetUserName": "bruce.wayne",
+            "winlog.event_data.WorkstationName": "Batman-PC",
+            "winlog.event_data.Status_StatusCodeDescription": "User logon outside authorized hours",
+            "winlog.event_data.SubStatus": "0xC000006F",
+            "winlog.event_data.IpAddress": "192.168.10.1",
+            "winlog.event_data.IpPort": "30999",
+            "winlog.event_id": "4625",
+            "winlog.channel": "Security",
+            "winlog.event_id_description": "An account failed to log on",
+            "DeviceProduct": "ElasticStack",
+            "Name": "An account failed to log on",
+            "DeviceEventClassId": "An account failed to log on"
+          },
+          "Environment": null,
+          "SourceSystemName": null
+        }
+      ],
+      "Environment": null,
+      "SourceSystemName": "ELK-SIEM",
+      "TicketId": null,
+      "Description": null,
+      "DisplayId": null,
+      "Reason": null,
+      "Name": "User Attempted Logon on Restricted Hours",
+      "DeviceVendor": "ElasticStack",
+      "DeviceProduct": "ElasticStack",
+      "StartTime": 1587017841628,
+      "EndTime": 1587017841628,
+      "IsTestCase": false,
+      "Priority": 0,
+      "RuleGenerator": "User Attempted Logon on Restricted Hours",
+      "SourceGroupingIdentifier": null,
+      "PlaybookTriggerKeywords": [],
+      "Extensions": [],
+      "Attachments": null
+    }
+  ],
+  "IsTestCase": false,
+  "DebugOutput": null,
+  "ConnectorIdentifier": null
+}

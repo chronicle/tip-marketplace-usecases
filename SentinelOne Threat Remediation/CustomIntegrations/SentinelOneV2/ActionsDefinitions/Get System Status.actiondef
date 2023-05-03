@@ -1,0 +1,26 @@
+{
+  "Name": "Get System Status",
+  "Description": "Fetch system status.",
+  "Script": "from SiemplifyUtils import output_handler\nfrom ScriptResult import EXECUTION_STATE_COMPLETED, EXECUTION_STATE_FAILED\nfrom SiemplifyAction import SiemplifyAction\nfrom SentinelOneV2Manager import SentinelOneV2Manager\nfrom TIPCommon import extract_configuration_param\n\n\n# Consts.\nINTEGRATION_NAME = u'SentinelOneV2'\nSCRIPT_NAME = u'Get System Status'\n\n\n@output_handler\ndef main():\n    # Configuration.\n    siemplify = SiemplifyAction()\n    siemplify.script_name = u\"{} - {}\".format(INTEGRATION_NAME, SCRIPT_NAME)\n    siemplify.LOGGER.info(u\"================= Main - Param Init =================\")\n\n    api_root = extract_configuration_param(siemplify, provider_name=INTEGRATION_NAME, param_name=u\"Api Root\",\n                                           is_mandatory=True, input_type=unicode)\n    api_token = extract_configuration_param(siemplify, provider_name=INTEGRATION_NAME, param_name=u\"API Token\",\n                                            is_mandatory=True, input_type=unicode)\n    verify_ssl = extract_configuration_param(siemplify, provider_name=INTEGRATION_NAME, param_name=u\"Verify SSL\",\n                                             default_value=False, input_type=bool)\n\n    siemplify.LOGGER.info(u\"----------------- Main - Started -----------------\")\n\n    json_results = {}\n    try:\n        sentinel_one_manager = SentinelOneV2Manager(api_root, api_token, verify_ssl)\n        siemplify.LOGGER.info(u\"Getting system status.\")\n        system_status = sentinel_one_manager.get_system_status()\n        siemplify.LOGGER.info(u\"Getting DB system status\")\n        db_status = sentinel_one_manager.get_db_system_status()\n        siemplify.LOGGER.info(u\"Getting cache server system status\")\n        cache_status = sentinel_one_manager.get_cache_server_system_status()\n\n        json_results = {\n            u\"system_status\": system_status.raw_data,\n            u\"db_status\": db_status.raw_data,\n            u\"cache_status\": cache_status.raw_data\n        }\n\n        if system_status.is_ok and db_status.is_ok and cache_status.is_ok:\n            output_message = u'Successfully checked system status. No issues were found.'\n        else:\n            output_message = u'Errors were found in the system, check SentinelOne instance status!'\n\n        status = EXECUTION_STATE_COMPLETED\n        result_value = u\"true\"\n\n    except Exception as e:\n        siemplify.LOGGER.error(u\"Error executing action \\\"Get System status\\\". Reason: {}\".format(e))\n        siemplify.LOGGER.exception(e)\n        status = EXECUTION_STATE_FAILED\n        result_value = u\"false\"\n        output_message = u\"Error executing action \\\"Get System status\\\". Reason: {}\".format(e)\n\n    siemplify.result.add_result_json(json_results)\n    siemplify.LOGGER.info(u\"----------------- Main - Finished -----------------\")\n    siemplify.LOGGER.info(u\"Status: {}:\".format(status))\n    siemplify.LOGGER.info(u\"Result Value: {}\".format(result_value))\n    siemplify.LOGGER.info(u\"Output Message: {}\".format(output_message))\n    siemplify.end(output_message, result_value, status)\n\n    siemplify.end(output_message, True)\n\n\nif __name__ == '__main__':\n    main()\n",
+  "IntegrationIdentifier": "SentinelOneV2",
+  "ScriptResultName": "is_success",
+  "DynamicResultsMetadata": [
+    {
+      "ResultName": "JsonResult",
+      "ResultExample": "{\"system_status\": {\"data\": {\"health\": \"ok\"}}, \"db_status\": {\"data\": {\"health\": \"ok\"}}, \"cache_status\": {\"data\": {\"health\": \"ok\"}}}",
+      "ShowResult": true
+    }
+  ],
+  "Creator": "Admin",
+  "IsEnabled": true,
+  "IsCustom": true,
+  "IsSystem": false,
+  "Version": 2.0,
+  "TimeoutSeconds": 600,
+  "Parameters": [],
+  "DefaultResultValue": null,
+  "PythonVersion": "None",
+  "Id": 0,
+  "CreationTimeUnixTimeInMs": 1588021981899,
+  "ModificationTimeUnixTimeInMs": 1590908125692
+}

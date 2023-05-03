@@ -1,0 +1,60 @@
+{
+  "Cases": [
+    {
+      "Events": [
+        {
+          "_fields": {
+            "BaseEventIds": [],
+            "ParentEventId": 0,
+            "DeviceEventClassId": "Phishing email detector MISP",
+            "StartTime": "1615563002077",
+            "EndTime": "1615563002077",
+            "DeviceProduct": "Phishing - Simulation for MISP"
+          },
+          "_rawDataFields": {
+            "sourcetype": "Phishing email detector",
+            "DeviceVendor": "Email server",
+            "EventId": "220",
+            "Name": "Your New Salary Notification",
+            "Mail_OriginalEmailBody": "Hello, You have an important email from the Human Resources Department with regards to your December 2015 Paycheck\r\n\r\nThis email is enclosed in the Marquette University secure network, hence access it below\r\n\r\nAccess the documents here <http://markossolomon.com/F1q7QX.php<link removed>\r\n\r\n***Ensure your login credentials are correct to avoid cancellations**\r\n\r\nFaithfully \r\nHuman Resources \r\nUniversity of California, Berkeley\r\n\r",
+            "Severity": "High",
+            "CategoryOutcome": "allowed",
+            "SourceUserName": "f.attacker4@gmail.com",
+            "DestinationUserName": "yair@siemplify.co",
+            "sentTime": "1522059431000",
+            "message_id": "220",
+            "subject": "Your New Salary Notification",
+            "body": "Hello, You have an important email from the Human Resources Department with regards to your December 2015 Paycheck\r\n\r\nThis email is enclosed in the Marquette University secure network, hence access it below\r\n\r\nAccess the documents here <http://markossolomon.com/F1q7QX.php<link removed>\r\n\r\n***Ensure your login credentials are correct to avoid cancellations**\r\n\r\nFaithfully \r\nHuman Resources \r\nUniversity of California, Berkeley\r\n\r",
+            "DeviceProduct": "Phishing email detector",
+            "FileHash": "c0a0266f6df7f1235aeb4aad554e505320560967248c9c5cce7409fc77b56bd5",
+            "DeviceEventClassId": "Email check"
+          },
+          "Environment": null,
+          "SourceSystemName": null,
+          "Extensions": []
+        }
+      ],
+      "Environment": null,
+      "SourceSystemName": "Arcsight",
+      "TicketId": null,
+      "Description": null,
+      "DisplayId": null,
+      "Reason": null,
+      "Name": "Suspicious phishing email MISP",
+      "DeviceVendor": "Phishing - Simulation for MISP",
+      "DeviceProduct": "Phishing - Simulation for MISP",
+      "StartTime": 1615563002077,
+      "EndTime": 1615563002077,
+      "IsTestCase": true,
+      "Priority": 0,
+      "RuleGenerator": "Phishing email detector MISP",
+      "SourceGroupingIdentifier": null,
+      "PlaybookTriggerKeywords": [],
+      "Extensions": [],
+      "Attachments": null
+    }
+  ],
+  "IsTestCase": true,
+  "DebugOutput": null,
+  "ConnectorIdentifier": null
+}

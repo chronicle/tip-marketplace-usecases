@@ -1,0 +1,207 @@
+{
+  "Id": 0,
+  "Identifier": "f50bd12d-712a-4b9b-9598-d406b7977ce2",
+  "Version": "0",
+  "IsEnabled": true,
+  "IsDebugMode": false,
+  "Name": "URL_Initialize_Block",
+  "Creator": "Admin",
+  "ModifiedBy": "Admin",
+  "Priority": 2,
+  "Description": "An embedded workflow that initialize URL input parameters from the case to a local playbook parameter as output\n",
+  "Environments": [
+    "*"
+  ],
+  "CategoryName": "Imported Playbooks",
+  "CategoryId": 34,
+  "OriginalPlaybookIdentifier": "b3093dcf-1239-4dc4-80f2-c162fe262376",
+  "CreationTimeUnixTimeInMs": 1613994336028,
+  "ModificationTimeUnixTimeInMs": 1614518114170,
+  "Trigger": {
+    "Id": 0,
+    "Identifier": "9ba94d43-b52b-4886-b3ea-509a67979cd5",
+    "Type": 11,
+    "LogicalOperator": 0,
+    "Conditions": [
+      {
+        "FieldName": "PB_Url",
+        "Value": "",
+        "MatchType": 0
+      }
+    ]
+  },
+  "Steps": [
+    {
+      "WorkflowIdentifier": "f50bd12d-712a-4b9b-9598-d406b7977ce2",
+      "WorkflowInstanceIdentifier": 0,
+      "CaseId": 0,
+      "IndicatorIdentifier": null,
+      "Status": -1,
+      "ExecutingUser": null,
+      "ResultCode": 0,
+      "Message": null,
+      "ResultValue": null,
+      "Results": [],
+      "TargetEntities": [],
+      "ResultEntities": [],
+      "Properties": {},
+      "actionDef": null,
+      "BlockStepId": null,
+      "JsonResultObject": null,
+      "IntegrationInstanceIdentifier": "00000000-0000-0000-0000-000000000000",
+      "IntegrationInstanceName": null,
+      "IntegrationInstanceEnvironment": null,
+      "Description": "",
+      "Identifier": "756f5068-8447-4218-9d7a-7b2d96a31dfb",
+      "OriginalStepIdentifier": "a981fff2-d252-4abd-8aa7-393e4ed40171",
+      "IsAutomatic": true,
+      "IsSkippable": false,
+      "InstanceName": "block_url_comment",
+      "Name": "Siemplify_Case Comment",
+      "Integration": "Siemplify",
+      "ActionProvider": "Scripts",
+      "ActionName": "Siemplify_Case Comment",
+      "Type": 0,
+      "Parameters": [
+        {
+          "Name": "FallbackIntegrationInstance",
+          "Value": "e278df06-12ff-426d-9dae-d4c1e58a5bad",
+          "Type": null,
+          "IsMandatory": false,
+          "DefaultValue": null,
+          "Id": 0,
+          "CreationTimeUnixTimeInMs": 0,
+          "ModificationTimeUnixTimeInMs": 0,
+          "AdditionalProperties": {}
+        },
+        {
+          "Name": "IntegrationInstance",
+          "Value": "AutomaticEnvironment",
+          "Type": null,
+          "IsMandatory": false,
+          "DefaultValue": null,
+          "Id": 0,
+          "CreationTimeUnixTimeInMs": 0,
+          "ModificationTimeUnixTimeInMs": 0,
+          "AdditionalProperties": {}
+        },
+        {
+          "Name": "ScriptName",
+          "Value": "Siemplify_Case Comment",
+          "Type": null,
+          "IsMandatory": false,
+          "DefaultValue": null,
+          "Id": 0,
+          "CreationTimeUnixTimeInMs": 0,
+          "ModificationTimeUnixTimeInMs": 0,
+          "AdditionalProperties": {}
+        },
+        {
+          "Name": "ScriptParametersEntityFields",
+          "Value": "{\"Comment\":\"URL comment test\"}",
+          "Type": null,
+          "IsMandatory": false,
+          "DefaultValue": null,
+          "Id": 0,
+          "CreationTimeUnixTimeInMs": 0,
+          "ModificationTimeUnixTimeInMs": 0,
+          "AdditionalProperties": {}
+        },
+        {
+          "Name": "SelectedScopeName",
+          "Value": "All entities",
+          "Type": null,
+          "IsMandatory": false,
+          "DefaultValue": null,
+          "Id": 0,
+          "CreationTimeUnixTimeInMs": 0,
+          "ModificationTimeUnixTimeInMs": 0,
+          "AdditionalProperties": {}
+        }
+      ],
+      "AutoSkipOnFailure": false,
+      "IsDebugMockData": false,
+      "DebugData": {
+        "OriginalWorkflowIdentifier": "b3093dcf-1239-4dc4-80f2-c162fe262376",
+        "OriginalStepIdentifier": "a981fff2-d252-4abd-8aa7-393e4ed40171",
+        "ResultValue": "",
+        "ResultJson": "",
+        "ScopeEntitiesEnrichmentData": [],
+        "Id": 0,
+        "CreationTimeUnixTimeInMs": 0,
+        "ModificationTimeUnixTimeInMs": 0,
+        "AdditionalProperties": {}
+      },
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1614518114144,
+      "ModificationTimeUnixTimeInMs": 1614518114170,
+      "AdditionalProperties": {}
+    },
+    {
+      "WorkflowIdentifier": "f50bd12d-712a-4b9b-9598-d406b7977ce2",
+      "WorkflowInstanceIdentifier": 0,
+      "CaseId": 0,
+      "IndicatorIdentifier": null,
+      "Status": -1,
+      "ExecutingUser": null,
+      "ResultCode": 0,
+      "Message": null,
+      "ResultValue": null,
+      "Results": [],
+      "TargetEntities": [],
+      "ResultEntities": [],
+      "Properties": {},
+      "actionDef": null,
+      "BlockStepId": null,
+      "JsonResultObject": null,
+      "IntegrationInstanceIdentifier": "00000000-0000-0000-0000-000000000000",
+      "IntegrationInstanceName": null,
+      "IntegrationInstanceEnvironment": null,
+      "Description": "",
+      "Identifier": "ecd54140-8f4e-4bfb-b549-23210a08b224",
+      "OriginalStepIdentifier": "793b2f3e-cb11-47b4-925d-3bb7e3a82558",
+      "IsAutomatic": true,
+      "IsSkippable": false,
+      "InstanceName": "Output_1",
+      "Name": "Output",
+      "Integration": "Flow",
+      "ActionProvider": "Flow",
+      "ActionName": "OutputAction",
+      "Type": 6,
+      "Parameters": [
+        {
+          "Name": "NestedWorkflowOutput",
+          "Value": "[Input.PB_Url]",
+          "Type": null,
+          "IsMandatory": false,
+          "DefaultValue": null,
+          "Id": 0,
+          "CreationTimeUnixTimeInMs": 0,
+          "ModificationTimeUnixTimeInMs": 0,
+          "AdditionalProperties": {}
+        }
+      ],
+      "AutoSkipOnFailure": false,
+      "IsDebugMockData": false,
+      "DebugData": null,
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1614518114144,
+      "ModificationTimeUnixTimeInMs": 1614518114170,
+      "AdditionalProperties": {}
+    }
+  ],
+  "StepsRelations": [
+    {
+      "Condition": "",
+      "FromStep": "756f5068-8447-4218-9d7a-7b2d96a31dfb",
+      "ToStep": "ecd54140-8f4e-4bfb-b549-23210a08b224",
+      "DestinationActionStatus": 0
+    }
+  ],
+  "TemplateName": null,
+  "PlaybookType": 1,
+  "DebugData": {
+    "DebugBaseAlertId": null,
+    "DebugAlertId": null
+  }
+}

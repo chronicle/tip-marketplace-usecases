@@ -1,0 +1,75 @@
+{
+  "Cases": [
+    {
+      "Events": [
+        {
+          "_fields": {
+            "BaseEventIds": [],
+            "ParentEventId": 0,
+            "DeviceEventClassId": "CB_ANALYTICS",
+            "StartTime": "1611910227195",
+            "EndTime": "1611910227195",
+            "DeviceProduct": "Carbon Black - Simulation Case"
+          },
+          "_rawDataFields": {
+            "deviceProduct": "VMware Carbon Black Cloud Enterprise EDR",
+            "name": "Correlation",
+            "threat_id": "34a29f9e7e4d48eefdc6f29e09cde96b",
+            "id": "3498082",
+            "legacy_alert_id": "AHQSKTTU",
+            "create_time": "4/22/20 4:22:06 PM",
+            "last_update_time": "4/22/20 4:22:06 PM",
+            "first_event_time": "4/22/20 4:21:19 PM",
+            "last_event_time": "4/22/20 4:21:19 PM",
+            "severity": "3",
+            "category": "THREAT",
+            "device_os": "WINDOWS",
+            "device_os_version": "Windows 10 x64",
+            "device_username": "Jhon.Dough@Company.com",
+            "policy_id": "28422",
+            "policy_name": "SB Policy",
+            "target_value": "MEDIUM",
+            "reason": "The application sbsimulator.exe invoked another application (cmd.exe). A Deny Policy Action was applied.",
+            "threat_indicators_1_process_name": "mspaint.exe",
+            "threat_indicators_1_sha256": "9917a60e2ead834cdf76ce09f4fd04bde6e64b7abe15f52d08ebc1489bd3aa9e",
+            "threat_indicators_1_ttps_1": "MITRE_T1059_CMD_LINE_INTER",
+            "threat_cause_actor_sha256": "9917a60e2ead834cdf76ce09f4fd04bde6e64b7abe15f52d08ebc1489bd3aa9e",
+            "device_name": "CBTest1406",
+            "kill_chain_status_1": "INSTALL_RUN",
+            "run_state": "RAN",
+            "mac_address": "000000000000",
+            "organization_id": "0000",
+            "sensor_states_1": "ACTIVE",
+            "priority": "30",
+            "type": "CB_ANALYTICS",
+            "threat_cause_vector": "UNKNOWN",
+            "DeviceEventClassId": "Correlation"
+          },
+          "Environment": null,
+          "SourceSystemName": null
+        }
+      ],
+      "Environment": null,
+      "SourceSystemName": "CBCloud",
+      "TicketId": null,
+      "Description": null,
+      "DisplayId": null,
+      "Reason": null,
+      "Name": "Carbon Black - Simulation Case",
+      "DeviceVendor": "Carbon Black - Simulation Case",
+      "DeviceProduct": "Carbon Black - Simulation Case",
+      "StartTime": 1611910227195,
+      "EndTime": 1611910227195,
+      "IsTestCase": true,
+      "Priority": 0,
+      "RuleGenerator": "CB_ANALYTICS",
+      "SourceGroupingIdentifier": null,
+      "PlaybookTriggerKeywords": [],
+      "Extensions": [],
+      "Attachments": null
+    }
+  ],
+  "IsTestCase": true,
+  "DebugOutput": null,
+  "ConnectorIdentifier": null
+}

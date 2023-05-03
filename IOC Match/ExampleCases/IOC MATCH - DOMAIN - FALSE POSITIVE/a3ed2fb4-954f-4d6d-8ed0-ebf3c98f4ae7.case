@@ -1,0 +1,49 @@
+{
+  "Cases": [
+    {
+      "Events": [
+        {
+          "_fields": {
+            "BaseEventIds": [],
+            "ParentEventId": 0,
+            "DeviceEventClassId": "IOC Match - Domain - False Positive",
+            "StartTime": "1582060268029",
+            "EndTime": "1582060268029",
+            "DeviceProduct": "TIP"
+          },
+          "_rawDataFields": {
+            "Hostname": "PC0001",
+            "domain": "google.com",
+            "Alert_Message": "Connection to suspicious domain",
+            "DeviceProduct": "TIP",
+            "Name": "IOC Match - Domain - False Positive",
+            "DeviceEventClassId": "IOC Match - Domain - False Positive"
+          },
+          "Environment": null,
+          "SourceSystemName": null
+        }
+      ],
+      "Environment": null,
+      "SourceSystemName": "Splunk",
+      "TicketId": null,
+      "Description": null,
+      "DisplayId": null,
+      "Reason": null,
+      "Name": "IOC Match - Domain - False Positive",
+      "DeviceVendor": "TIP",
+      "DeviceProduct": "TIP",
+      "StartTime": 1582060268029,
+      "EndTime": 1582060268029,
+      "IsTestCase": false,
+      "Priority": 0,
+      "RuleGenerator": "IOC Match - Domain - False Positive",
+      "SourceGroupingIdentifier": null,
+      "PlaybookTriggerKeywords": [],
+      "Extensions": [],
+      "Attachments": null
+    }
+  ],
+  "IsTestCase": false,
+  "DebugOutput": null,
+  "ConnectorIdentifier": null
+}

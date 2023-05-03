@@ -1,0 +1,82 @@
+{
+  "Identifier": "b93c687a-e588-4098-ac91-95a3cdc4a5fa",
+  "MinimumSystemVersion": 0.0,
+  "CreationTimeInUnixtime": "1612785566058",
+  "Version": 0.0,
+  "Order": 0,
+  "Name": "Brute Force Attack - Investigation",
+  "ShortDescription": "The Use Case helps an analyst on investigating multiple unsuccessful login attempts. If the login failure reason is an incorrect password, automation raises an incident and notifies the IT team",
+  "Description": "<p>The Use Case helps an analyst on investigating multiple unsuccessful login attempts. If the login failure reason is an incorrect password, automation raises an incident and notifies the IT team</p>",
+  "VideoLink": "https://www.youtube.com/embed/ZQDqLyGBfmk",
+  "UpdaterFullName": "Siemplify Admin",
+  "IsAvailableForCommunity": true,
+  "NonMandatoryIntegrations": [
+    "AzureActiveDirectory",
+    "VirusTotal",
+    "SiemplifyThreatFuse"
+  ],
+  "UpdaterEmail": "lovkova.elena@siemplify.co",
+  "Downloads": 0,
+  "UpdaterImageBase64": "",
+  "PublishComment": null,
+  "Categories": [
+    "Logon"
+  ],
+  "Tags": [],
+  "CategorySvgImage": null,
+  "Playbooks": [
+    "Brute-Force-Attack-Detected",
+    "AzureActiveDirectory-User-Enrichment",
+    "Escalation-block"
+  ],
+  "CommercialIntegrations": [
+    {
+      "Identifier": "EmailV2",
+      "Version": 11.0
+    },
+    {
+      "Identifier": "Siemplify",
+      "Version": 51.0
+    },
+    {
+      "Identifier": "SiemplifyUtilities",
+      "Version": 9.0
+    },
+    {
+      "Identifier": "AzureActiveDirectory",
+      "Version": 6.0
+    },
+    {
+      "Identifier": "VirusTotal",
+      "Version": 31.0
+    },
+    {
+      "Identifier": "Tools",
+      "Version": 5.0
+    },
+    {
+      "Identifier": "SiemplifyThreatFuse",
+      "Version": 1.0
+    }
+  ],
+  "Integrations": [
+    "EmailV2",
+    "Siemplify",
+    "SiemplifyUtilities",
+    "AzureActiveDirectory",
+    "VirusTotal",
+    "Tools",
+    "SiemplifyThreatFuse"
+  ],
+  "Connectors": [],
+  "InstalledConnectors": [],
+  "TestCases": [
+    {
+      "CaseTitle": "Unsuccessful Logon Threshold Reached"
+    }
+  ],
+  "GalleryImageBase64": null,
+  "GalleryOrder": -1,
+  "IsRecommended": false,
+  "IsLocal": true
+}

@@ -1,0 +1,56 @@
+{
+  "Cases": [
+    {
+      "Events": [
+        {
+          "_fields": {
+            "BaseEventIds": [],
+            "ParentEventId": 0,
+            "DeviceEventClassId": "High count of traffic detected",
+            "StartTime": "1586970636589",
+            "EndTime": "1586970636589",
+            "DeviceProduct": "Palo Alto"
+          },
+          "_rawDataFields": {
+            "source.ip": "87.98.244.20",
+            "destination.ip": "10.10.10.3",
+            "source.port": "11211",
+            "destination.port": "54958",
+            "network.transport": "udp",
+            "session.end.reason": "aged-out",
+            "action": "allow",
+            "log.type": "TRAFFIC",
+            "source.zone": "UnTrust",
+            "destination.zone": "Trust",
+            "DeviceProduct": "Palo Alto",
+            "Name": "High count of traffic detected",
+            "DeviceEventClassId": "High count of traffic detected"
+          },
+          "Environment": null,
+          "SourceSystemName": null
+        }
+      ],
+      "Environment": null,
+      "SourceSystemName": "ElasticStack",
+      "TicketId": null,
+      "Description": null,
+      "DisplayId": null,
+      "Reason": null,
+      "Name": "High count of traffic detected (inbound)",
+      "DeviceVendor": "Palo Alto",
+      "DeviceProduct": "Palo Alto",
+      "StartTime": 1586970636589,
+      "EndTime": 1586970636589,
+      "IsTestCase": false,
+      "Priority": 0,
+      "RuleGenerator": "High count of traffic detected",
+      "SourceGroupingIdentifier": null,
+      "PlaybookTriggerKeywords": [],
+      "Extensions": [],
+      "Attachments": null
+    }
+  ],
+  "IsTestCase": false,
+  "DebugOutput": null,
+  "ConnectorIdentifier": null
+}

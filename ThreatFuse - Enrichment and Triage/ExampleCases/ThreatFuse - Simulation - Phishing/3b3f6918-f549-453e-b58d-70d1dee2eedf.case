@@ -1,0 +1,49 @@
+{
+  "Cases": [
+    {
+      "Events": [
+        {
+          "_fields": {
+            "BaseEventIds": [],
+            "ParentEventId": 0,
+            "DeviceEventClassId": "Phishing",
+            "StartTime": "1611092178442",
+            "EndTime": "1611092178442",
+            "DeviceProduct": "ThreatFuse - Simulation - Phishing"
+          },
+          "_rawDataFields": {
+            "Recipient": "finance@mycompany.com",
+            "Sender": "notification@admin-server145.ml",
+            "DeviceProduct": "Phishing Alerting Product",
+            "Name": "ThreatFuse Triage - Simulation - Phishing",
+            "File hash": "46930ec6d7ddf5fc7dc7e08fe5ec4bf6",
+            "DeviceEventClassId": "ThreatFuse - Simulation - Phishing"
+          },
+          "Environment": null,
+          "SourceSystemName": null
+        }
+      ],
+      "Environment": null,
+      "SourceSystemName": "Suspicious Phishing Email",
+      "TicketId": null,
+      "Description": null,
+      "DisplayId": null,
+      "Reason": null,
+      "Name": "ThreatFuse - Simulation - Phishing",
+      "DeviceVendor": "ThreatFuse - Simulation - Phishing",
+      "DeviceProduct": "ThreatFuse - Simulation - Phishing",
+      "StartTime": 1611092178442,
+      "EndTime": 1611092178442,
+      "IsTestCase": true,
+      "Priority": 0,
+      "RuleGenerator": "Phishing",
+      "SourceGroupingIdentifier": null,
+      "PlaybookTriggerKeywords": [],
+      "Extensions": [],
+      "Attachments": null
+    }
+  ],
+  "IsTestCase": true,
+  "DebugOutput": null,
+  "ConnectorIdentifier": null
+}

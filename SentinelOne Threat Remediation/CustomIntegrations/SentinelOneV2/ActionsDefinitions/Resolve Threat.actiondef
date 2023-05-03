@@ -1,0 +1,55 @@
+{
+  "Name": "Resolve Threat",
+  "Description": "Resolves a threat by threat ID.",
+  "Script": "from SiemplifyUtils import output_handler\nfrom SiemplifyAction import SiemplifyAction\nfrom SentinelOneV2Manager import SentinelOneV2Manager\nfrom TIPCommon import extract_configuration_param, extract_action_param\n\n# Consts.\nINTEGRATION_NAME = u'SentinelOneV2'\nSCRIPT_NAME = u'Resolve Threat'\n\n\n@output_handler\ndef main():\n    # Define Variables.\n    result_value = False\n\n    # Configuration.\n    siemplify = SiemplifyAction()\n    siemplify.script_name = u\"{} - {}\".format(INTEGRATION_NAME, SCRIPT_NAME)\n    siemplify.LOGGER.info(u\"================= Main - Param Init =================\")\n\n    api_root = extract_configuration_param(siemplify, provider_name=INTEGRATION_NAME, param_name=u\"Api Root\",\n                                           is_mandatory=True, input_type=unicode)\n    api_token = extract_configuration_param(siemplify, provider_name=INTEGRATION_NAME, param_name=u\"API Token\",\n                                            is_mandatory=True, input_type=unicode)\n    verify_ssl = extract_configuration_param(siemplify, provider_name=INTEGRATION_NAME, param_name=u\"Verify SSL\",\n                                             default_value=False, input_type=bool)\n\n    threat_id = extract_action_param(siemplify, param_name=u\"Threat ID\", is_mandatory=False, input_type=unicode,\n                                     print_value=True)\n    annotation_string = extract_action_param(siemplify, param_name=u\"Annotate\", is_mandatory=False, input_type=unicode,\n                                             print_value=True)\n\n    siemplify.LOGGER.info(u\"----------------- Main - Started -----------------\")\n\n    sentinel_one_manager = SentinelOneV2Manager(api_root, api_token, verify_ssl)\n\n    # Mark threat as resolved.\n    siemplify.LOGGER.info(u\"Resolving threat id: {}\".format(threat_id))\n    resolve_threat = sentinel_one_manager.mark_threats_as_resolved(threat_id, annotation_string)\n    number_of_resolved_threats = resolve_threat.get('affected')\n\n    if number_of_resolved_threats >= 1:\n        output_message = 'Successfully marked {} threats as Resolved'.format(number_of_resolved_threats)\n        result_value = True\n    else:\n        output_message = 'No threats were resolved.'\n\n    siemplify.LOGGER.info(output_message)\n    siemplify.end(output_message, result_value)\n\n\nif __name__ == '__main__':\n    main()\n",
+  "IntegrationIdentifier": "SentinelOneV2",
+  "ScriptResultName": "is_success",
+  "DynamicResultsMetadata": [
+    {
+      "ResultName": "JsonResult",
+      "ResultExample": null,
+      "ShowResult": true
+    }
+  ],
+  "Creator": "Admin",
+  "IsEnabled": true,
+  "IsCustom": true,
+  "IsSystem": false,
+  "Version": 30.0,
+  "TimeoutSeconds": 600,
+  "Parameters": [
+    {
+      "CustomActionId": 0,
+      "IsMandatory": true,
+      "DefaultValue": "864939471788227136",
+      "Description": null,
+      "Name": "Threat ID",
+      "Value": "864939471788227136",
+      "Type": 0,
+      "OptionalValues": null,
+      "OptionalValuesJson": null,
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1590908125534,
+      "ModificationTimeUnixTimeInMs": 1590908125534
+    },
+    {
+      "CustomActionId": 0,
+      "IsMandatory": false,
+      "DefaultValue": null,
+      "Description": null,
+      "Name": "Annotate",
+      "Value": null,
+      "Type": 0,
+      "OptionalValues": null,
+      "OptionalValuesJson": null,
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1590908125534,
+      "ModificationTimeUnixTimeInMs": 1590908125534
+    }
+  ],
+  "DefaultResultValue": null,
+  "PythonVersion": "None",
+  "Id": 0,
+  "CreationTimeUnixTimeInMs": 1588021982135,
+  "ModificationTimeUnixTimeInMs": 1590908125528
+}

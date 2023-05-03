@@ -1,0 +1,53 @@
+{
+  "Identifier": "f266ccd6-b574-4560-bcd8-cde4318f1aa6",
+  "MinimumSystemVersion": 0.0,
+  "CreationTimeInUnixtime": "1662961580552",
+  "Version": 0.0,
+  "Order": 0,
+  "Name": "Cybersixgill Alerts for SOC",
+  "ShortDescription": null,
+  "Description": "<p>Monitor activity in all of our sources ragarding key company assets and provide real-time alerts on incoming threats, to create dedicated playbooks.</p>",
+  "VideoLink": null,
+  "UpdaterFullName": "Siemplify Admin",
+  "IsAvailableForCommunity": false,
+  "NonMandatoryIntegrations": [],
+  "UpdaterEmail": "admin@domain.com",
+  "Downloads": 0,
+  "UpdaterImageBase64": "",
+  "PublishComment": null,
+  "Categories": [
+    "Threat Intelligence"
+  ],
+  "Tags": [],
+  "CategorySvgImage": null,
+  "Playbooks": [
+    "Cybersixgill-Actionable-Alerts"
+  ],
+  "CommercialIntegrations": [
+    {
+      "Identifier": "Siemplify",
+      "Version": 58.0
+    },
+    {
+      "Identifier": "Cybersixgill Actionable Alerts",
+      "Version": 2.0
+    }
+  ],
+  "Integrations": [
+    "Siemplify",
+    "Cybersixgill Actionable Alerts"
+  ],
+  "Connectors": [
+    "Cybersixgill Actionable Alerts"
+  ],
+  "InstalledConnectors": [],
+  "TestCases": [
+    {
+      "CaseTitle": "Cybersixgill Actionable Alerts"
+    }
+  ],
+  "GalleryImageBase64": null,
+  "GalleryOrder": -1,
+  "IsRecommended": false,
+  "IsLocal": true
+}

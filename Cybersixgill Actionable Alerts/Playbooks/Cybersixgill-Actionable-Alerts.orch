@@ -1,0 +1,261 @@
+{
+  "Id": 0,
+  "Identifier": "74be5820-e3b7-41ca-aec3-ab43436396f8",
+  "Version": "0",
+  "IsEnabled": true,
+  "IsDebugMode": false,
+  "Name": "Cybersixgill Actionable Alerts",
+  "Creator": "Admin",
+  "ModifiedBy": "Admin",
+  "Priority": 2,
+  "Description": "Creates Insights for Each Alert",
+  "Environments": [
+    "Default Environment"
+  ],
+  "CategoryName": "Default",
+  "CategoryId": 1,
+  "OriginalPlaybookIdentifier": "84da1015-477f-4a6e-b8b9-2c53fdf6e591",
+  "CreationTimeUnixTimeInMs": 1657804630898,
+  "ModificationTimeUnixTimeInMs": 1658125283877,
+  "Trigger": {
+    "Id": 0,
+    "Identifier": "efedebd8-4601-4bd4-96d7-27b2546dd006",
+    "Type": 3,
+    "LogicalOperator": 0,
+    "Conditions": [
+      {
+        "FieldName": "",
+        "Value": "Cybersixgill Actionable Alerts",
+        "MatchType": 0
+      }
+    ]
+  },
+  "Steps": [
+    {
+      "WorkflowIdentifier": "74be5820-e3b7-41ca-aec3-ab43436396f8",
+      "WorkflowInstanceIdentifier": 0,
+      "CaseId": 0,
+      "IndicatorIdentifier": null,
+      "Status": -1,
+      "ExecutingUser": null,
+      "ResultCode": 0,
+      "Message": null,
+      "ResultValue": null,
+      "Results": [],
+      "TargetEntities": [],
+      "ResultEntities": [],
+      "Properties": {},
+      "actionDef": null,
+      "BlockStepId": null,
+      "JsonResultObject": null,
+      "IntegrationInstanceIdentifier": "00000000-0000-0000-0000-000000000000",
+      "IntegrationInstanceName": null,
+      "IntegrationInstanceEnvironment": null,
+      "Description": "Add a general insight configurable message to the case",
+      "Identifier": "85d55bc4-4866-4754-b93c-63137b763df4",
+      "OriginalStepIdentifier": "8e5d2485-c943-4097-b796-6f653c225476",
+      "IsAutomatic": true,
+      "IsSkippable": false,
+      "InstanceName": "Alert Info Table",
+      "Name": "Siemplify_Add General Insight",
+      "Integration": "Siemplify",
+      "ActionProvider": "Scripts",
+      "ActionName": "Siemplify_Add General Insight",
+      "Type": 0,
+      "Parameters": [
+        {
+          "Name": "FallbackIntegrationInstance",
+          "Value": null,
+          "Type": null,
+          "IsMandatory": false,
+          "DefaultValue": null,
+          "Id": 0,
+          "CreationTimeUnixTimeInMs": 0,
+          "ModificationTimeUnixTimeInMs": 0,
+          "AdditionalProperties": {}
+        },
+        {
+          "Name": "IntegrationInstance",
+          "Value": "7fce3a69-db01-4299-b9f2-6838510a88c7",
+          "Type": null,
+          "IsMandatory": false,
+          "DefaultValue": null,
+          "Id": 0,
+          "CreationTimeUnixTimeInMs": 0,
+          "ModificationTimeUnixTimeInMs": 0,
+          "AdditionalProperties": {}
+        },
+        {
+          "Name": "ScriptName",
+          "Value": "Siemplify_Add General Insight",
+          "Type": null,
+          "IsMandatory": false,
+          "DefaultValue": null,
+          "Id": 0,
+          "CreationTimeUnixTimeInMs": 0,
+          "ModificationTimeUnixTimeInMs": 0,
+          "AdditionalProperties": {}
+        },
+        {
+          "Name": "ScriptParametersEntityFields",
+          "Value": "{\"Title\":\"Alert Info\",\"Message\":\"<!DOCTYPE html>\\r\\n<html>\\r\\n<head>\\r\\n<style>th, td {border: 1px solid black;border-collapse:collapse;}</style>\\n<body>\\n<h2> Alert Content</h2>\\n<table style= \\\"width:100%\\\">\\n<tr>\\n<td>Alert Name</td>\\n<td>[Event.Alert_Name]</td>\\n</tr>\\n<tr>\\n<td>Alert Id</td>\\n<td>[Event.Alert_Id]</td>\\n</tr>\\n<tr>\\n<td> Cybersixgill Portal</td>\\n<td><a href=\\\"[Event.Portal_URL]\\\", target=\\\"_blank\\\">\\r[Event.Portal_URL]</a></td>\\n<tr>\\n<td>Description</td>\\n<td>[Event.Description]</td>\\n</tr>\\n<tr>\\n<td>Created Time</td>\\n<td>[Event.Create_Time]</td>\\n</tr>\\n<tr>\\n<td>Attributes</td>\\n<td>[Event.Attributes]</td>\\n</tr>\\n<tr>\\n<td>Threat Type</td>\\n<td>[Event.Threat_Type]</td>\\n</tr>\\n<tr>\\n<td>Assessment</td>\\n<td>[Event.Assessment]</td>\\n</tr>\\n<tr>\\n<td>Recommendations</td>\\n<td>[Event.Recommendations]</td>\\n</tr>\\n<tr>\\n<td>CVSS 3.1</td>\\n<td>[Event.CVSS_3_1]</td>\\n</tr>\\n<tr>\\n<td>CVSS 2.0</td>\\n<td>[Event.CVSS_2_0]</td>\\n</tr>\\n<tr>\\n<td>DVE Score</td>\\n<td>[Event.DVE_Score]</td>\\n</tr>\\n<tr>\\n<td>CVE Attrbutes</td>\\n<td>[Event.CVE_Attributes]</td>\\n</tr>\\n</table>\\n</body>\\n</html>\\n[Event.Sub_Alerts]\",\"Triggered By\":\"\"}",
+          "Type": null,
+          "IsMandatory": false,
+          "DefaultValue": null,
+          "Id": 0,
+          "CreationTimeUnixTimeInMs": 0,
+          "ModificationTimeUnixTimeInMs": 0,
+          "AdditionalProperties": {}
+        },
+        {
+          "Name": "SelectedScopeName",
+          "Value": "All entities",
+          "Type": null,
+          "IsMandatory": false,
+          "DefaultValue": null,
+          "Id": 0,
+          "CreationTimeUnixTimeInMs": 0,
+          "ModificationTimeUnixTimeInMs": 0,
+          "AdditionalProperties": {}
+        }
+      ],
+      "AutoSkipOnFailure": false,
+      "IsDebugMockData": false,
+      "DebugData": {
+        "OriginalWorkflowIdentifier": "84da1015-477f-4a6e-b8b9-2c53fdf6e591",
+        "OriginalStepIdentifier": "8e5d2485-c943-4097-b796-6f653c225476",
+        "ResultValue": "",
+        "ResultJson": "",
+        "ScopeEntitiesEnrichmentData": [],
+        "Id": 0,
+        "CreationTimeUnixTimeInMs": 0,
+        "ModificationTimeUnixTimeInMs": 0,
+        "AdditionalProperties": {}
+      },
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1658125283877,
+      "ModificationTimeUnixTimeInMs": 1658125283877,
+      "AdditionalProperties": {}
+    },
+    {
+      "WorkflowIdentifier": "74be5820-e3b7-41ca-aec3-ab43436396f8",
+      "WorkflowInstanceIdentifier": 0,
+      "CaseId": 0,
+      "IndicatorIdentifier": null,
+      "Status": -1,
+      "ExecutingUser": null,
+      "ResultCode": 0,
+      "Message": null,
+      "ResultValue": null,
+      "Results": [],
+      "TargetEntities": [],
+      "ResultEntities": [],
+      "Properties": {},
+      "actionDef": null,
+      "BlockStepId": null,
+      "JsonResultObject": null,
+      "IntegrationInstanceIdentifier": "00000000-0000-0000-0000-000000000000",
+      "IntegrationInstanceName": null,
+      "IntegrationInstanceEnvironment": null,
+      "Description": "Add a general insight configurable message to the case",
+      "Identifier": "f703586f-4fa2-464a-b4ff-1ecc8788bea8",
+      "OriginalStepIdentifier": "bc44569e-ba0d-4b3a-b26d-39638dd3eca5",
+      "IsAutomatic": true,
+      "IsSkippable": false,
+      "InstanceName": "Raw Json Alerts",
+      "Name": "Siemplify_Add General Insight",
+      "Integration": "Siemplify",
+      "ActionProvider": "Scripts",
+      "ActionName": "Siemplify_Add General Insight",
+      "Type": 0,
+      "Parameters": [
+        {
+          "Name": "FallbackIntegrationInstance",
+          "Value": null,
+          "Type": null,
+          "IsMandatory": false,
+          "DefaultValue": null,
+          "Id": 0,
+          "CreationTimeUnixTimeInMs": 0,
+          "ModificationTimeUnixTimeInMs": 0,
+          "AdditionalProperties": {}
+        },
+        {
+          "Name": "IntegrationInstance",
+          "Value": "7fce3a69-db01-4299-b9f2-6838510a88c7",
+          "Type": null,
+          "IsMandatory": false,
+          "DefaultValue": null,
+          "Id": 0,
+          "CreationTimeUnixTimeInMs": 0,
+          "ModificationTimeUnixTimeInMs": 0,
+          "AdditionalProperties": {}
+        },
+        {
+          "Name": "ScriptName",
+          "Value": "Siemplify_Add General Insight",
+          "Type": null,
+          "IsMandatory": false,
+          "DefaultValue": null,
+          "Id": 0,
+          "CreationTimeUnixTimeInMs": 0,
+          "ModificationTimeUnixTimeInMs": 0,
+          "AdditionalProperties": {}
+        },
+        {
+          "Name": "ScriptParametersEntityFields",
+          "Value": "{\"Title\":\"Raw Json Alerts\",\"Message\":\"[Event.Alert_RawJson]\",\"Triggered By\":\"\"}",
+          "Type": null,
+          "IsMandatory": false,
+          "DefaultValue": null,
+          "Id": 0,
+          "CreationTimeUnixTimeInMs": 0,
+          "ModificationTimeUnixTimeInMs": 0,
+          "AdditionalProperties": {}
+        },
+        {
+          "Name": "SelectedScopeName",
+          "Value": "All entities",
+          "Type": null,
+          "IsMandatory": false,
+          "DefaultValue": null,
+          "Id": 0,
+          "CreationTimeUnixTimeInMs": 0,
+          "ModificationTimeUnixTimeInMs": 0,
+          "AdditionalProperties": {}
+        }
+      ],
+      "AutoSkipOnFailure": false,
+      "IsDebugMockData": false,
+      "DebugData": {
+        "OriginalWorkflowIdentifier": "84da1015-477f-4a6e-b8b9-2c53fdf6e591",
+        "OriginalStepIdentifier": "bc44569e-ba0d-4b3a-b26d-39638dd3eca5",
+        "ResultValue": "",
+        "ResultJson": "",
+        "ScopeEntitiesEnrichmentData": [],
+        "Id": 0,
+        "CreationTimeUnixTimeInMs": 0,
+        "ModificationTimeUnixTimeInMs": 0,
+        "AdditionalProperties": {}
+      },
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1658125283877,
+      "ModificationTimeUnixTimeInMs": 1658125283877,
+      "AdditionalProperties": {}
+    }
+  ],
+  "StepsRelations": [
+    {
+      "Condition": "",
+      "FromStep": "85d55bc4-4866-4754-b93c-63137b763df4",
+      "ToStep": "f703586f-4fa2-464a-b4ff-1ecc8788bea8",
+      "DestinationActionStatus": 0
+    }
+  ],
+  "TemplateName": null,
+  "PlaybookType": 0,
+  "DebugData": {
+    "DebugBaseAlertId": null,
+    "DebugAlertId": null
+  }
+}

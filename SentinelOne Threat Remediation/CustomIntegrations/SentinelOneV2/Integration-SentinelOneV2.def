@@ -1,0 +1,232 @@
+{
+  "IsAvailableForCommunity": false,
+  "Identifier": "SentinelOneV2",
+  "ShouldInstalledInSystem": false,
+  "Version": 4.0,
+  "DisplayName": "SentinelOneV2",
+  "Description": "Endpoint security software that defends every endpoint against every type of attack, at every stage in the threat lifecycle.",
+  "ImageBase64": "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",
+  "SvgImage": "<?xml version=\"1.0\" encoding=\"utf-8\"?><svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" viewBox=\"0 0 50 50\" style=\"enable-background:new 0 0 50 50;\" xml:space=\"preserve\"><g><path d=\"M33.2,12.9c-1.3-0.7-2.7-1.4-4.3-1.7c0,11.2,0,22.3,0,33.6c0.2-0.1,0.4-0.2,0.6-0.3c1.4-0.9,2.8-1.8,4.2-2.6c0.4-0.3,0.6-0.6,0.6-1.1c0-8.6,0-17.2,0-25.8C34.3,13.9,34,13.4,33.2,12.9z\"/><path d=\"M21.1,11.4c-1.7,0.4-3.2,1.1-4.6,2.1c-0.2,0.1-0.3,0.5-0.3,0.7c0,9,0,18,0,27c0,0.4,0.1,0.6,0.5,0.8c1.3,0.8,2.6,1.6,3.9,2.4c0.3,0.2,0.6,0.4,1,0.6c0-11.3,0-22.4,0-33.6C21.4,11.4,21.2,11.4,21.1,11.4z\"/><path d=\"M14.2,7.2c-1.1,1.7-2.3,3.4-3.4,5.1c-1.2,2.2-1.8,4.5-1.7,7c0.1,4.9,0,9.7,0,14.6c0,0.4,0,0.8,0,1.1c0.5,3.3,3,4.8,5.7,6.1c0-11.5,0-23,0-34.4c-0.1,0-0.1-0.1-0.2-0.1C14.6,6.8,14.4,6.9,14.2,7.2z\"/><path d=\"M22.9,37.2c1.7,0,3.3,0,4.9,0c0-10.8,0-21.5,0-32.2c-1.7,0-3.3,0-4.9,0C22.9,15.7,22.9,26.4,22.9,37.2z\"/><path d=\"M40.8,17.5c0-3.9-1.5-7.1-4.3-9.8c-0.3-0.3-0.7-0.5-1.1-0.9c0,11.4,0,22.7,0,34.2c1.1-0.7,2.1-1.2,3.1-1.8c1.5-1,2.3-2.4,2.3-4.2C40.9,29.1,40.9,23.3,40.8,17.5z\"/></g></svg>",
+  "IsCustom": true,
+  "PythonVersion": 1,
+  "IntegrationProperties": [
+    {
+      "IntegrationIdentifier": "SentinelOneV2",
+      "PropertyName": "Api Root",
+      "PropertyDescription": null,
+      "PropertyDisplayName": "API Root",
+      "PropertyType": 2,
+      "IsMandatory": true,
+      "Value": "https://{server}.SentinelOne.net/",
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1590908125726,
+      "ModificationTimeUnixTimeInMs": 1590908125726
+    },
+    {
+      "IntegrationIdentifier": "SentinelOneV2",
+      "PropertyName": "API Token",
+      "PropertyDescription": null,
+      "PropertyDisplayName": "API Token",
+      "PropertyType": 3,
+      "IsMandatory": true,
+      "Value": null,
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1590908125726,
+      "ModificationTimeUnixTimeInMs": 1590908125726
+    },
+    {
+      "IntegrationIdentifier": "SentinelOneV2",
+      "PropertyName": "Verify SSL",
+      "PropertyDescription": null,
+      "PropertyDisplayName": "Verify SSL",
+      "PropertyType": 0,
+      "IsMandatory": false,
+      "Value": "",
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1590908125726,
+      "ModificationTimeUnixTimeInMs": 1590908125726
+    }
+  ],
+  "IntegrationSupportedActions": [
+    {
+      "Name": "Resolve Threat",
+      "Description": "Resolves a threat by threat ID.",
+      "Id": 34,
+      "CreationTimeUnixTimeInMs": 1588021982135,
+      "ModificationTimeUnixTimeInMs": 1590908125528
+    },
+    {
+      "Name": "Ping",
+      "Description": "Test integration connectivity.",
+      "Id": 37,
+      "CreationTimeUnixTimeInMs": 1588021982151,
+      "ModificationTimeUnixTimeInMs": 1590908125553
+    },
+    {
+      "Name": "Move Agent to Group",
+      "Description": "Move agent to group by endpoint's host name or IP address.",
+      "Id": 39,
+      "CreationTimeUnixTimeInMs": 1588036118993,
+      "ModificationTimeUnixTimeInMs": 1590908125561
+    },
+    {
+      "Name": "Get File From Endpoint",
+      "Description": "Get file from the endpoint (Activity Type: 80). Default password for file is: SiemplifyP@ss123 ",
+      "Id": 40,
+      "CreationTimeUnixTimeInMs": 1588041101143,
+      "ModificationTimeUnixTimeInMs": 1590908125573
+    },
+    {
+      "Name": "Create Path Exclusion Record",
+      "Description": "Create a new path exclusion record.",
+      "Id": 41,
+      "CreationTimeUnixTimeInMs": 1588021981931,
+      "ModificationTimeUnixTimeInMs": 1590908125588
+    },
+    {
+      "Name": "Get Events For Endpoint Hours Back",
+      "Description": "Get the latest events for the endpoint.",
+      "Id": 43,
+      "CreationTimeUnixTimeInMs": 1588021981912,
+      "ModificationTimeUnixTimeInMs": 1590908125604
+    },
+    {
+      "Name": "Get Application List For Endpoint",
+      "Description": "Get endpoint;s applications list by it's host name or IP address.",
+      "Id": 44,
+      "CreationTimeUnixTimeInMs": 1588021982099,
+      "ModificationTimeUnixTimeInMs": 1590908125621
+    },
+    {
+      "Name": "Enrich Endpoint",
+      "Description": "Fetch endpoint's system information by it's  host name or IP address.",
+      "Id": 45,
+      "CreationTimeUnixTimeInMs": 1588021982078,
+      "ModificationTimeUnixTimeInMs": 1590908125626
+    },
+    {
+      "Name": "Reconnect Agent To The Network",
+      "Description": "Reconnect disconnected endpoint to the network.",
+      "Id": 46,
+      "CreationTimeUnixTimeInMs": 1588021982106,
+      "ModificationTimeUnixTimeInMs": 1590908125633
+    },
+    {
+      "Name": "Get Process List For Endpoint",
+      "Description": "Get list of processes for an endpoint by it's host name or IP address.",
+      "Id": 50,
+      "CreationTimeUnixTimeInMs": 1588021982094,
+      "ModificationTimeUnixTimeInMs": 1590908125659
+    },
+    {
+      "Name": "Mitigate Threat",
+      "Description": "Mitigate a threat by threat ID.",
+      "Id": 48,
+      "CreationTimeUnixTimeInMs": 1590918628728,
+      "ModificationTimeUnixTimeInMs": 1590918628755
+    },
+    {
+      "Name": "Decommission Agent",
+      "Description": "Decommission Agent.",
+      "Id": 52,
+      "CreationTimeUnixTimeInMs": 1588023804624,
+      "ModificationTimeUnixTimeInMs": 1590908125669
+    },
+    {
+      "Name": "Get Agent Status",
+      "Description": "Get agent status by endpoint's host name or IP address.",
+      "Id": 53,
+      "CreationTimeUnixTimeInMs": 1588021982027,
+      "ModificationTimeUnixTimeInMs": 1590908125673
+    },
+    {
+      "Name": "Disconnect Agent From Network",
+      "Description": "Disconnect agent from network by it's host name or IP address.",
+      "Id": 54,
+      "CreationTimeUnixTimeInMs": 1588021981967,
+      "ModificationTimeUnixTimeInMs": 1590908125677
+    },
+    {
+      "Name": "Get System Status",
+      "Description": "Fetch system status.",
+      "Id": 56,
+      "CreationTimeUnixTimeInMs": 1588021981899,
+      "ModificationTimeUnixTimeInMs": 1590908125692
+    },
+    {
+      "Name": "Fetch Agent Logs",
+      "Description": "Fetch agent logs for endpoint.",
+      "Id": 33,
+      "CreationTimeUnixTimeInMs": 1588023817665,
+      "ModificationTimeUnixTimeInMs": 1590908125523
+    },
+    {
+      "Name": "Initiate Full Scan",
+      "Description": "Initiate endpoint full scan.",
+      "Id": 35,
+      "CreationTimeUnixTimeInMs": 1588021982128,
+      "ModificationTimeUnixTimeInMs": 1590908125539
+    },
+    {
+      "Name": "Get Activity",
+      "Description": "Retrieve list of activities by agent.",
+      "Id": 36,
+      "CreationTimeUnixTimeInMs": 1588039407216,
+      "ModificationTimeUnixTimeInMs": 1590908125543
+    },
+    {
+      "Name": "Get System Version",
+      "Description": "Fetch system version.",
+      "Id": 42,
+      "CreationTimeUnixTimeInMs": 1588021981992,
+      "ModificationTimeUnixTimeInMs": 1590908125598
+    },
+    {
+      "Name": "Shutdown Endpoint",
+      "Description": "Shutdown endpoint.",
+      "Id": 47,
+      "CreationTimeUnixTimeInMs": 1588023848410,
+      "ModificationTimeUnixTimeInMs": 1590908125639
+    },
+    {
+      "Name": "Abort Scan",
+      "Description": "Abort endpoint scan.",
+      "Id": 49,
+      "CreationTimeUnixTimeInMs": 1588023792885,
+      "ModificationTimeUnixTimeInMs": 1590908125655
+    },
+    {
+      "Name": "Reboot Endpoint",
+      "Description": "Reboot endpoint.",
+      "Id": 51,
+      "CreationTimeUnixTimeInMs": 1588023837903,
+      "ModificationTimeUnixTimeInMs": 1590908125664
+    },
+    {
+      "Name": "Get Group",
+      "Description": "Get group information by group name.",
+      "Id": 55,
+      "CreationTimeUnixTimeInMs": 1588021981957,
+      "ModificationTimeUnixTimeInMs": 1590908125681
+    },
+    {
+      "Name": "Get Hash Reputation",
+      "Description": "Feth hash reputation.",
+      "Id": 38,
+      "CreationTimeUnixTimeInMs": 1590921554713,
+      "ModificationTimeUnixTimeInMs": 1590921554726
+    }
+  ],
+  "Categories": null,
+  "HasConnectors": false,
+  "DocumentationLink": null,
+  "IsCertified": false,
+  "UploaderFullName": null,
+  "UploaderEmail": null,
+  "UploaderImageBase64": null,
+  "UploaderProfileLink": null,
+  "MinimumSystemVersion": 0.0,
+  "Id": 0,
+  "CreationTimeUnixTimeInMs": 1590908125726,
+  "ModificationTimeUnixTimeInMs": 1590908125726
+}

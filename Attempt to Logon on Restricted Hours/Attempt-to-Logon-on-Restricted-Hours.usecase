@@ -1,0 +1,55 @@
+{
+  "Identifier": "c48a7b85-5f92-4448-a4ae-2a2a1bbf845f",
+  "CreationTimeInUnixtime": "1587224341166",
+  "Order": 0,
+  "Name": "Suspicious Login at Restricted Hours",
+  "Description": "This use case helps an analyst on investigating logins outside of the allowed time. If logon type is suspicious, playbook automation performs IP and user enrichment and resets the user password.",
+  "ShortDescription": "This use case helps an analyst on investigating logins outside of the allowed time. If logon type is suspicious, playbook automation performs IP and user enrichment and resets the user password.",
+  "VideoLink": null,
+  "UpdaterFullName": "CommunityUser",
+  "UpdaterEmail": "elena.lovkova@siemplify.co",
+  "UpdaterImageBase64": null,
+  "Categories": [
+    "Logon"
+  ],
+  "Tags": [],
+  "CategorySvgImage": null,
+  "Playbooks": [
+    "Attempt-to-Logon-on-Restricted-Hours"
+  ],
+  "CommercialIntegrations": [
+    {
+      "Identifier": "EmailV2",
+      "Version": 3.0
+    },
+    {
+      "Identifier": "Siemplify",
+      "Version": 32.0
+    },
+    {
+      "Identifier": "AzureActiveDirectory",
+      "Version": 2.0
+    },
+    {
+      "Identifier": "SiemplifyUtilities",
+      "Version": 6.0
+    },
+    {
+      "Identifier": "APIVoid",
+      "Version": 4.0
+    }
+  ],
+  "Integrations": [
+    "EmailV2",
+    "Siemplify",
+    "AzureActiveDirectory",
+    "SiemplifyUtilities",
+    "APIVoid"
+  ],
+  "Connectors": [],
+  "TestCases": [
+    {
+      "CaseTitle": "User Attempted Logon on Restricted Hours"
+    }
+  ]
+}

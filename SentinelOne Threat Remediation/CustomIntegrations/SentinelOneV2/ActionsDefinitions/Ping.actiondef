@@ -1,0 +1,20 @@
+{
+  "Name": "Ping",
+  "Description": "Test integration connectivity.",
+  "Script": "from SiemplifyUtils import output_handler\nfrom ScriptResult import EXECUTION_STATE_FAILED, EXECUTION_STATE_COMPLETED\nfrom SiemplifyAction import SiemplifyAction\nfrom SentinelOneV2Manager import SentinelOneV2Manager\nfrom TIPCommon import extract_configuration_param\n\n# Consts.\nINTEGRATION_NAME = u'SentinelOneV2'\nSCRIPT_NAME = u'Ping'\n\n\n@output_handler\ndef main():\n    siemplify = SiemplifyAction()\n    siemplify.script_name = u\"{} - {}\".format(INTEGRATION_NAME, SCRIPT_NAME)\n    siemplify.LOGGER.info(u\"================= Main - Param Init =================\")\n\n    # INIT INTEGRATION CONFIGURATION:\n    api_root = extract_configuration_param(siemplify, provider_name=INTEGRATION_NAME, param_name=u\"Api Root\",\n                                           is_mandatory=True, input_type=unicode)\n    api_token = extract_configuration_param(siemplify, provider_name=INTEGRATION_NAME, param_name=u\"API Token\",\n                                            is_mandatory=True, input_type=unicode)\n    verify_ssl = extract_configuration_param(siemplify, provider_name=INTEGRATION_NAME, param_name=u\"Verify SSL\",\n                                             default_value=False, input_type=bool)\n\n    siemplify.LOGGER.info(u\"----------------- Main - Started -----------------\")\n\n    try:\n        sentinel_one_manager = SentinelOneV2Manager(api_root, api_token, verify_ssl)\n        sentinel_one_manager.test_connectivity()\n\n        status = EXECUTION_STATE_COMPLETED\n        result_value = u\"true\"\n        output_message = u'Connection Established.'\n\n    except Exception as e:\n        siemplify.LOGGER.error(u\"Error executing action \\\"Ping\\\". Reason: {}\".format(e))\n        siemplify.LOGGER.exception(e)\n        status = EXECUTION_STATE_FAILED\n        result_value = u\"false\"\n        output_message = u\"Error executing action \\\"Ping\\\". Reason: {}\".format(e)\n\n    siemplify.LOGGER.info(u\"----------------- Main - Finished -----------------\")\n    siemplify.LOGGER.info(u\"Status: {}:\".format(status))\n    siemplify.LOGGER.info(u\"Result Value: {}\".format(result_value))\n    siemplify.LOGGER.info(u\"Output Message: {}\".format(output_message))\n    siemplify.end(output_message, result_value, status)\n\n\nif __name__ == '__main__':\n    main()\n",
+  "IntegrationIdentifier": "SentinelOneV2",
+  "ScriptResultName": "is_success",
+  "DynamicResultsMetadata": null,
+  "Creator": "Admin",
+  "IsEnabled": true,
+  "IsCustom": true,
+  "IsSystem": false,
+  "Version": 2.0,
+  "TimeoutSeconds": 600,
+  "Parameters": [],
+  "DefaultResultValue": null,
+  "PythonVersion": "None",
+  "Id": 0,
+  "CreationTimeUnixTimeInMs": 1588021982151,
+  "ModificationTimeUnixTimeInMs": 1590908125553
+}

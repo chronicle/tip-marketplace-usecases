@@ -1,0 +1,56 @@
+{
+  "Cases": [
+    {
+      "Events": [
+        {
+          "_fields": {
+            "BaseEventIds": [],
+            "ParentEventId": 0,
+            "DeviceEventClassId": "Generic Phishing Site Detection",
+            "StartTime": "1587049387906",
+            "EndTime": "1587049387906",
+            "DeviceProduct": "Palo Alto"
+          },
+          "_rawDataFields": {
+            "source.ip": "10.0.0.2",
+            "destination.ip": "85.187.128.23",
+            "threat.id": "18111",
+            "threat.name": "Generic Phishing Site Detection",
+            "threat.category": "Phishing",
+            "threat.action": "reset-both",
+            "source.port": "36865",
+            "destination.port": "80",
+            "DeviceProduct": "Palo Alto",
+            "source.user": "sarah.marshall",
+            "url": "http://cogeco.universaldept.co.uk/",
+            "Name": "Generic Phishing Site Detection",
+            "DeviceEventClassId": "Generic Phishing Site Detection"
+          },
+          "Environment": null,
+          "SourceSystemName": null
+        }
+      ],
+      "Environment": null,
+      "SourceSystemName": "ElasticStack",
+      "TicketId": null,
+      "Description": null,
+      "DisplayId": null,
+      "Reason": null,
+      "Name": "Generic Phishing Site Detection",
+      "DeviceVendor": "Palo Alto",
+      "DeviceProduct": "Palo Alto",
+      "StartTime": 1587049387906,
+      "EndTime": 1587049387906,
+      "IsTestCase": false,
+      "Priority": 0,
+      "RuleGenerator": "Generic Phishing Site Detection",
+      "SourceGroupingIdentifier": null,
+      "PlaybookTriggerKeywords": [],
+      "Extensions": [],
+      "Attachments": null
+    }
+  ],
+  "IsTestCase": false,
+  "DebugOutput": null,
+  "ConnectorIdentifier": null
+}

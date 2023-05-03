@@ -1,0 +1,59 @@
+{
+  "Cases": [
+    {
+      "Events": [
+        {
+          "_fields": {
+            "BaseEventIds": [],
+            "ParentEventId": 0,
+            "deviceEventClassId": "Cybersixgill Actionable Alerts",
+            "startTime": "1628725568675",
+            "endTime": "1628725568675",
+            "deviceProduct": "Cybersixgill Actionable Alerts"
+          },
+          "_rawDataFields": {
+            "alert_id": "61cad1ef6bbfbaa3404379c9",
+            "alert_name": "Recent mentions of your domains in the underground",
+            "alert_type": "PercolatedQueryBasedManagedAlertRule",
+            "alert_type_id": "619cbe2551f07dc17b05d8b4",
+            "Portal_URL": "https://portal.cybersixgill.com/#/?actionable_alert=61cad1ef6bbfbaa3404379c9",
+            "description": "The following is a summary of recent mentions of your domains in the cyber underground.",
+            "deviceProduct": "Cybersixgill Actionable Alerts",
+            "name": "Cybersixgill Actionabel Alerts",
+            "deviceEventClassId": "Cybersixgill Actionable Alerts",
+            "Alert_RawJson": "In this section you will see Cybersixgill's Raw json data of an alert"
+          },
+          "Environment": null,
+          "SourceSystemName": null,
+          "Extensions": []
+        }
+      ],
+      "Environment": null,
+      "SourceSystemName": "Cybersixgill Actionable Alerts",
+      "TicketId": null,
+      "Description": null,
+      "DisplayId": null,
+      "Reason": null,
+      "Name": "Cybersixgill Actionable Alerts",
+      "DeviceVendor": "Cybersixgill Actionable Alerts",
+      "DeviceProduct": "Cybersixgill Actionable Alerts",
+      "StartTime": 1628725568675,
+      "EndTime": 1628725568675,
+      "IsTestCase": false,
+      "Priority": 0,
+      "RuleGenerator": "Cybersixgill Actionable Alerts",
+      "SourceGroupingIdentifier": null,
+      "PlaybookTriggerKeywords": [],
+      "Extensions": [
+        {
+          "Key": "Cybersixgill Actionable Alerts",
+          "Value": "Cybersixgill Actionable Alerts"
+        }
+      ],
+      "Attachments": null
+    }
+  ],
+  "IsTestCase": false,
+  "DebugOutput": null,
+  "ConnectorIdentifier": null
+}

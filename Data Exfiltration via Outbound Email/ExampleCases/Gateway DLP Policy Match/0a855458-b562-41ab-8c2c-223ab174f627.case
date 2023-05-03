@@ -1,0 +1,113 @@
+{
+  "Cases": [
+    {
+      "Events": [
+        {
+          "_fields": {
+            "BaseEventIds": [],
+            "ParentEventId": 0,
+            "DeviceEventClassId": "Gateway DLP Policy Matched",
+            "StartTime": "1587294223326",
+            "EndTime": "1587294223326",
+            "DeviceProduct": "ACEDLP-Gateway"
+          },
+          "_rawDataFields": {
+            "APPLICATION_NAME": "NULL",
+            "APPLICATION_USER": "NULL",
+            "ATTACHMENT_FILENAME": "document.pdf",
+            "BLOCKED": "Y",
+            "DATAOWNER_NAME": "Data Security Office",
+            "DATAOWNER_EMAIL": "datasec@siemplify.com",
+            "DESTINATION_IP": "NULL",
+            "INCIDENT_ID": "1202993",
+            "INCIDENT_SNAPSHOT": "https://10.151.3.128/DLP/Incidents/1202993",
+            "MACHINE_IP": "10.10.27.102",
+            "MATCH_COUNT": "3",
+            "OCCURRED_ON": "16022020 18:22:31",
+            "POLICY": "CORPFINDATA_EMAIL_POL14",
+            "RULES": "Attachment_Scan_CFD01",
+            "PROTOCOL": "SMTP",
+            "QUARANTINE_PARENT_PATH": "\\\\10.151.3.128\\Quarantine",
+            "RECIPIENTS": "bfdijwh@competitor.com",
+            "REPORTED_ON": "16022020 18:30:01 UTC",
+            "SCAN": "ACTIVE1",
+            "SENDER": "jsmith@siemplify.com",
+            "MONITOR_NAME": "DLPREP01",
+            "SEVERITY": "2",
+            "STATUS": "QUARANTINED",
+            "SUBJECT": "Some Info!",
+            "TARGET": "SMTP STREAM",
+            "URL": "NULL",
+            "DeviceProduct": "ACEDLP-Gateway",
+            "Name": "DLP Policy Matched in attachment: DOCUMENT.PDF",
+            "DeviceEventClassId": "DLP Policy Matched in email attachment: DOCUMENT.PDF"
+          },
+          "Environment": null,
+          "SourceSystemName": null
+        }
+      ],
+      "Environment": null,
+      "SourceSystemName": "ArcSight",
+      "TicketId": null,
+      "Description": null,
+      "DisplayId": null,
+      "Reason": null,
+      "Name": "Gateway DLP Policy Match",
+      "DeviceVendor": "ACEDLP-Gateway",
+      "DeviceProduct": "ACEDLP-Gateway",
+      "StartTime": 1587294223326,
+      "EndTime": 1587294223326,
+      "IsTestCase": false,
+      "Priority": 0,
+      "RuleGenerator": "Gateway DLP Policy Matched",
+      "SourceGroupingIdentifier": null,
+      "PlaybookTriggerKeywords": [],
+      "Extensions": [
+        {
+          "Key": "Priority",
+          "Value": "2"
+        },
+        {
+          "Key": "Manager Receipt Time",
+          "Value": "16 Feb 2020 18:37:12 UTC"
+        },
+        {
+          "Key": "Event End Time",
+          "Value": "16 Feb 2020 18:22:31 UTC"
+        },
+        {
+          "Key": "Source Address",
+          "Value": "10.10.27.102"
+        },
+        {
+          "Key": "Source Host Name",
+          "Value": "MAIL200"
+        },
+        {
+          "Key": "Source User Name",
+          "Value": "SYSTEM"
+        },
+        {
+          "Key": "Device Address",
+          "Value": "5C-EA-1D-26-41-59"
+        },
+        {
+          "Key": "Device Vendor",
+          "Value": "ACE"
+        },
+        {
+          "Key": "Device Product",
+          "Value": "ACEDLP"
+        },
+        {
+          "Key": "Device Version",
+          "Value": "4.1.1"
+        }
+      ],
+      "Attachments": null
+    }
+  ],
+  "IsTestCase": false,
+  "DebugOutput": null,
+  "ConnectorIdentifier": null
+}

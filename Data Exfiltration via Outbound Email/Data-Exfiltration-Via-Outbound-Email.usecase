@@ -1,0 +1,45 @@
+{
+  "Identifier": "9f6986bf-ef20-4e0f-ac37-e3cbe5f120f9",
+  "CreationTimeInUnixtime": "1587297764528",
+  "Order": 0,
+  "Name": "Data Leakage - Data Sent Via Email",
+  "ShortDescription": "This use case deals with a DLP alert coming from an outbound corporate mailhost, in which sensitive data is potentially being sent to an external 3rd party.",
+  "Description": "<p>This use case deals with a DLP alert coming from an outbound corporate mailhost, in which sensitive data is potentially being sent to an external 3rd party<p>",
+  "VideoLink": null,
+  "UpdaterFullName": "CommunityUser",
+  "UpdaterEmail": "elena.lovkova@siemplify.co",
+  "UpdaterImageBase64": null,
+  "Categories": [
+    "Endpoint"
+  ],
+  "Tags": [],
+  "CategorySvgImage": null,
+  "Playbooks": [
+    "Data-Leakage-Prevention-Alert"
+  ],
+  "CommercialIntegrations": [
+    {
+      "Identifier": "Siemplify",
+      "Version": 32.0
+    },
+    {
+      "Identifier": "EmailV2",
+      "Version": 3.0
+    },
+    {
+      "Identifier": "MitreAttck",
+      "Version": 3.0
+    }
+  ],
+  "Integrations": [
+    "Siemplify",
+    "EmailV2",
+    "MitreAttck"
+  ],
+  "Connectors": [],
+  "TestCases": [
+    {
+      "CaseTitle": "Gateway DLP Policy Match"
+    }
+  ]
+}

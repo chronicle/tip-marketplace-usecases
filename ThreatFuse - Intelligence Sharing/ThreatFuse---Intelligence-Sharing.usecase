@@ -1,0 +1,52 @@
+{
+  "Identifier": "177aabe8-b28a-437f-8057-6e11bf437c90",
+  "MinimumSystemVersion": 0.0,
+  "CreationTimeInUnixtime": "1611753756213",
+  "Version": 0.0,
+  "Order": 0,
+  "Name": "ThreatFuse - Intelligence Sharing",
+  "ShortDescription": "Every ThreatFuse user can contribute to the threat intelligence accuracy by submitting new malicious entities found in his environment.",
+  "Description": "<p>Every ThreatFuse user can contribute to the threat intelligence accuracy by submitting new malicious entities. If you have information about the threat that did not originate in the ThreatFuse, you can automatically submit the new threat indicators to the ThreatFuse.</p>",
+  "VideoLink": null,
+  "UpdaterFullName": "Siemplify Admin",
+  "IsAvailableForCommunity": true,
+  "NonMandatoryIntegrations": [
+  ],
+  "UpdaterEmail": "elena.lovkova@siemplify.co",
+  "Downloads": 0,
+  "UpdaterImageBase64": "",
+  "PublishComment": null,
+  "Categories": [
+    "Threat Intelligence"
+  ],
+  "Tags": [],
+  "CategorySvgImage": null,
+  "Playbooks": [
+    "ThreatFuse---Submit-observable"
+  ],
+  "CommercialIntegrations": [
+    {
+      "Identifier": "SiemplifyUtilities",
+      "Version": 9.0
+    },
+    {
+      "Identifier": "SiemplifyThreatFuse",
+      "Version": 1.0
+    }
+  ],
+  "Integrations": [
+    "SiemplifyUtilities",
+    "SiemplifyThreatFuse"
+  ],
+  "Connectors": [],
+  "InstalledConnectors": [],
+  "TestCases": [
+    {
+      "CaseTitle": "ThreatFuse - Simulation - Phishing"
+    }
+  ],
+  "GalleryImageBase64": null,
+  "GalleryOrder": -1,
+  "IsRecommended": true,
+  "IsLocal": true
+}

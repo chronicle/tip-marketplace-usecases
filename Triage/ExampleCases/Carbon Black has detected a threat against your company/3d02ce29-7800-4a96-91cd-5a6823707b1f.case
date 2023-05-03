@@ -1,0 +1,56 @@
+{
+  "Cases": [
+    {
+      "Events": [
+        {
+          "_fields": {
+            "BaseEventIds": [],
+            "ParentEventId": 0,
+            "DeviceEventClassId": "Carbon Black has detected a threat against your company",
+            "StartTime": "1587049059063",
+            "EndTime": "1587049059063",
+            "DeviceProduct": "CarbonBlack"
+          },
+          "_rawDataFields": {
+            "hash.sha256": "ed01ebfbc9eb5bbea545af4d01bf5f1071661840480439c6e5babe8e080e41aa",
+            "process.name": "diskpart.exe",
+            "source.user": "sarah.roberts",
+            "agent.type": "cbdefense1",
+            "threat.name": "Carbon Black has detected a threat against your company",
+            "alert.type": "THREAT",
+            "host.id": "SARAH-PC",
+            "source.ip": "10.0.0.1",
+            "agent.name": "CarbonBlack",
+            "device.product": "CarbonBlack",
+            "Name": "Carbon Black has detected a threat against your company",
+            "DeviceProduct": "CarbonBlack",
+            "DeviceEventClassId": "Carbon Black has detected a threat against your company"
+          },
+          "Environment": null,
+          "SourceSystemName": null
+        }
+      ],
+      "Environment": null,
+      "SourceSystemName": "ElasticStack",
+      "TicketId": null,
+      "Description": null,
+      "DisplayId": null,
+      "Reason": null,
+      "Name": "Carbon Black has detected a threat against your company",
+      "DeviceVendor": "CarbonBlack",
+      "DeviceProduct": "CarbonBlack",
+      "StartTime": 1587049059063,
+      "EndTime": 1587049059063,
+      "IsTestCase": false,
+      "Priority": 0,
+      "RuleGenerator": "Carbon Black has detected a threat against your company",
+      "SourceGroupingIdentifier": null,
+      "PlaybookTriggerKeywords": [],
+      "Extensions": [],
+      "Attachments": null
+    }
+  ],
+  "IsTestCase": false,
+  "DebugOutput": null,
+  "ConnectorIdentifier": null
+}

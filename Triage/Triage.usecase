@@ -1,0 +1,71 @@
+{
+  "Identifier": "a2e6794b-7ddd-4e46-b971-5c11ab0900d0",
+  "CreationTimeInUnixtime": "1587231118046",
+  "Order": 0,
+  "Name": "Alerts Triage",
+  "Description": "This playbook was made to automatically analyze all incoming threats on Siemplify, encrich it with information and then notify the analyst's via email.",
+  "ShortDescription": "This playbook was made to automatically analyze all incoming threats on Siemplify, encrich it with information and then notify the analyst's via email.",
+  "VideoLink": null,
+  "UpdaterFullName": "CommunityUser",
+  "UpdaterEmail": "elena.lovkova@siemplify.co",
+  "UpdaterImageBase64": null,
+  "Categories": [
+    "General"
+  ],
+  "Tags": [],
+  "CategorySvgImage": null,
+  "Playbooks": [
+    "Triage"
+  ],
+  "CommercialIntegrations": [
+    {
+      "Identifier": "APIVoid",
+      "Version": 4.0
+    },
+    {
+      "Identifier": "Siemplify",
+      "Version": 32.0
+    },
+    {
+      "Identifier": "VirusTotal",
+      "Version": 21.0
+    },
+    {
+      "Identifier": "FalconSandbox",
+      "Version": 3.0
+    },
+    {
+      "Identifier": "AzureActiveDirectory",
+      "Version": 2.0
+    },
+    {
+      "Identifier": "UrlScanIo",
+      "Version": 6.0
+    },
+    {
+      "Identifier": "EmailV2",
+      "Version": 3.0
+    }
+  ],
+  "Integrations": [
+    "APIVoid",
+    "Siemplify",
+    "VirusTotal",
+    "FalconSandbox",
+    "AzureActiveDirectory",
+    "UrlScanIo",
+    "EmailV2"
+  ],
+  "Connectors": [],
+  "TestCases": [
+    {
+      "CaseTitle": "Default Suspected Malware Definition"
+    },
+    {
+      "CaseTitle": "Carbon Black has detected a threat against your company"
+    },
+    {
+      "CaseTitle": "Generic Phishing Site Detection"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "Product": "CarbonBlack",
+    "EventName": "Carbon Black has detected a threat against your company",
+    "ComparisonType": 0,
+    "VisualFamily": "Default",
+    "ForMigration": false,
+    "Id": 352,
+    "CreationTimeUnixTimeInMs": 1587228894486,
+    "ModificationTimeUnixTimeInMs": 1587228894486
+  }
+]

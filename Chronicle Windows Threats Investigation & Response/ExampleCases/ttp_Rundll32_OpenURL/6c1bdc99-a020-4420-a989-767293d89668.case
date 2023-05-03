@@ -1,0 +1,109 @@
+{
+  "Cases": [
+    {
+      "CreatorUserId": null,
+      "Events": [
+        {
+          "_fields": {
+            "BaseEventIds": "[]",
+            "ParentEventId": -1,
+            "deviceEventClassId": "PROCESS_LAUNCH",
+            "deviceProduct": "RULE"
+          },
+          "_rawDataFields": {
+            "type": "GCTI_FINDING",
+            "id": "de_1a90bb50-bb38-a016-6df0-2342d8623819",
+            "event_category": "PROCESS",
+            "event_type": "PROCESS_LAUNCH",
+            "alert_type": "RULE",
+            "event_metadata_eventTimestamp": "2022-07-07T12:00:00Z",
+            "event_metadata_ingestedTimestamp": "2022-07-07T18:33:42.049326Z",
+            "event_metadata_eventType": "PROCESS_LAUNCH",
+            "event_principal_hostname": "CS-HYL01",
+            "event_principal_process_file_fullPath": "C:\\Windows\\System32\\smss.exe",
+            "event_principal_process_file_md5": "e33a34fa0e0696f6eae4feba11873f56",
+            "event_principal_process_pid": "1234",
+            "event_principal_process_commandLine": "run -d -b",
+            "event_principal_asset_hostname": "CS-HYL01",
+            "event_principal_asset_ip_1": "10.10.10.219",
+            "event_principal_asset_mac_1": "1c:a0:b8:76:07:8e",
+            "event_principal_ip_1": "10.10.10.219",
+            "event_principal_mac_1": "1c:a0:b8:76:07:8e",
+            "event_target_hostname": "abcd.host",
+            "event_target_process_file_fullPath": "C:\\Windows\\System32\\peexe.exe",
+            "event_target_process_commandLine": "run -d -b",
+            "detection_1_ruleSet": "a5590799-315c-27e5-c591-e86cad9a0788",
+            "detection_1_ruleSetDisplayName": "Suspicious Behavior",
+            "detection_1_ruleId": "ur_ttp_Rundll32_OpenURL",
+            "detection_1_ruleName": "ttp_Rundll32_OpenURL",
+            "detection_1_ruleLabels_1_key": "false_positives",
+            "detection_1_ruleLabels_1_value": "Unknown",
+            "detection_1_ruleLabels_2_key": "rule_name",
+            "detection_1_ruleLabels_2_value": "Rundll32_OpenURL",
+            "detection_1_alertState": "ALERTING",
+            "detection_1_summary": "Rule Detection",
+            "detection_1_description": "Identifies abuse of rundll32 url_dll for downloading files.",
+            "detection_1_severity": "MEDIUM",
+            "detectionTime": "2022-07-07T12:00:00Z",
+            "tags_1": "TA0005",
+            "tags_2": "T1218_011"
+          },
+          "Environment": null,
+          "SourceSystemName": null,
+          "Extensions": []
+        }
+      ],
+      "Environment": null,
+      "SourceSystemName": "GoogleChronicle",
+      "TicketId": "5e558ec5-ac17-4dd0-9b7b-22334422",
+      "Description": "",
+      "DisplayId": "5e558ec5-ac17-4dd0-9b7b-22334422",
+      "Reason": null,
+      "Name": "ttp_Rundll32_OpenURL",
+      "DeviceVendor": "Google Chronicle",
+      "DeviceProduct": "RULE",
+      "StartTime": 1522058625000,
+      "EndTime": 1522058625000,
+      "Type": 0,
+      "Priority": -1,
+      "RuleGenerator": "ttp_Rundll32_OpenURL",
+      "SourceGroupingIdentifier": null,
+      "PlaybookTriggerKeywords": [],
+      "Extensions": [
+        {
+          "Key": "rule_id",
+          "Value": "ttp_Rundll32_OpenURL"
+        },
+        {
+          "Key": "alert_type",
+          "Value": "RULE"
+        },
+        {
+          "Key": "ui_base_link",
+          "Value": "https://instance.backstory.chronicle.security"
+        },
+        {
+          "Key": "SourceSystemUrl",
+          "Value": "https://instance.backstory.chronicle.security"
+        },
+        {
+          "Key": "SourceRuleIdentifier",
+          "Value": "ttp_Rundll32_OpenURL"
+        },
+        {
+          "Key": "chronicle_alert_type",
+          "Value": "GCTI_FINDING"
+        }
+      ],
+      "Attachments": null,
+      "IsTrimmed": false,
+      "DataType": 1,
+      "SourceType": 1,
+      "SourceSystemUrl": null,
+      "SourceRuleIdentifier": null
+    }
+  ],
+  "Type": 0,
+  "DebugOutput": null,
+  "ConnectorIdentifier": null
+}

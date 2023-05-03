@@ -1,0 +1,22 @@
+[
+  {
+    "Source": "Cybersixgill Actionable Alerts",
+    "Product": "Cybersixgill Actionable Alerts",
+    "EventName": null,
+    "SecurityEventFieldName": "CVE",
+    "TransformationFunction": 0,
+    "TransformationFunctionParam": null,
+    "RawDataPrimaryFieldMatchTerm": "CVE_ID",
+    "RawDataPrimaryFieldComparisonType": 1,
+    "RawDataSecondaryFieldMatchTerm": null,
+    "RawDataSecondaryFieldComparisonType": 0,
+    "RawDataThirdFieldMatchTerm": null,
+    "RawDataThirdFieldComparisonType": 0,
+    "IsArtifact": true,
+    "ExtractionFunctionParam": ",",
+    "ExtractionFunction": 2,
+    "Id": 101,
+    "CreationTimeUnixTimeInMs": 1658125243720,
+    "ModificationTimeUnixTimeInMs": 1658125243720
+  }
+]

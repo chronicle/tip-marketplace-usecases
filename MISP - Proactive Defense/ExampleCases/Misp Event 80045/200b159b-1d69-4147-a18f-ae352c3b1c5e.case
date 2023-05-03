@@ -1,0 +1,331 @@
+{
+  "Cases": [
+    {
+      "Events": [
+        {
+          "_fields": {
+            "BaseEventIds": [],
+            "ParentEventId": 0,
+            "DeviceVendor": "MISP",
+            "DeviceProduct": "MISP",
+            "DeviceEventClassId": "Network activity"
+          },
+          "_rawDataFields": {
+            "url": "http://45.14.224.146/Y91/mips",
+            "category": "Network activity",
+            "starttime": "1603263755296",
+            "endtime": "1603263755296",
+            "name": "MISP event 80045",
+            "device_product": "MISP"
+          },
+          "Environment": null,
+          "SourceSystemName": null,
+          "Extensions": []
+        },
+        {
+          "_fields": {
+            "BaseEventIds": [],
+            "ParentEventId": 0,
+            "DeviceVendor": "MISP",
+            "DeviceProduct": "MISP",
+            "DeviceEventClassId": "Network activity"
+          },
+          "_rawDataFields": {
+            "ip-src": "45.14.224.146",
+            "category": "Network activity",
+            "starttime": "1603263755296",
+            "endtime": "1603263755296",
+            "name": "MISP event 80045",
+            "device_product": "MISP"
+          },
+          "Environment": null,
+          "SourceSystemName": null,
+          "Extensions": []
+        },
+        {
+          "_fields": {
+            "BaseEventIds": [],
+            "ParentEventId": 0,
+            "DeviceVendor": "MISP",
+            "DeviceProduct": "MISP",
+            "DeviceEventClassId": "file"
+          },
+          "_rawDataFields": {
+            "filename_1": "ba1f69f89302b78d5fb5d930db45d242d29a91b05e5e503392ad9aff4369dbae",
+            "size-in-bytes_1": "39300",
+            "float_1": "7.9314001073496",
+            "md5_1": "cd070172364bcd46c0503edbb5caa426",
+            "sha1_1": "934e2411ed1736dcfaba3d5d747264e37753f4e2",
+            "sha256_1": "ba1f69f89302b78d5fb5d930db45d242d29a91b05e5e503392ad9aff4369dbae",
+            "sha512_1": "2547e1c0fdf759b43b4978cbaa167aa81e90ac0e909df3c42a41a8a45190efa3499b4b5af145cbaa52a0dee895d26c6ca269991faa183db52521e37e7320fd45",
+            "malware-sample_1": "ba1f69f89302b78d5fb5d930db45d242d29a91b05e5e503392ad9aff4369dbae|cd070172364bcd46c0503edbb5caa426",
+            "mime-type_1": "application/x-executable",
+            "ssdeep_1": "768:tkRdVMqfF6yk6e83nlcZXAiKFLZBphBf5+sqy2uaNiJgGlzDpxYs2:C76qfF6oe8OwjLzphBf5+sgmVrYd",
+            "category": "file",
+            "starttime": "1603263755296",
+            "endtime": "1603263755296",
+            "name": "MISP event 80045",
+            "device_product": "MISP"
+          },
+          "Environment": null,
+          "SourceSystemName": null,
+          "Extensions": []
+        }
+      ],
+      "Environment": "Default Environment",
+      "SourceSystemName": "MISP Connector",
+      "TicketId": "0b4e5e9a-f041-42ad-88f9-6e0ddf8eaad0",
+      "Description": null,
+      "DisplayId": "0b4e5e9a-f041-42ad-88f9-6e0ddf8eaad1",
+      "Reason": null,
+      "Name": "Misp Event 80045",
+      "DeviceVendor": "MISP",
+      "DeviceProduct": "MISP",
+      "StartTime": 1603263755296,
+      "EndTime": 1603263755296,
+      "IsTestCase": true,
+      "Priority": -1,
+      "RuleGenerator": "MISP Events",
+      "SourceGroupingIdentifier": null,
+      "PlaybookTriggerKeywords": [],
+      "Extensions": [
+        {
+          "Key": "id",
+          "Value": "80045"
+        },
+        {
+          "Key": "orgc_id",
+          "Value": "1395"
+        },
+        {
+          "Key": "org_id",
+          "Value": "1368"
+        },
+        {
+          "Key": "date",
+          "Value": "2020-10-05"
+        },
+        {
+          "Key": "threat_level_id",
+          "Value": "1"
+        },
+        {
+          "Key": "info",
+          "Value": "IoT Malware: ba1f69f89302b78d5fb5d930db45d242d29a91b05e5e503392ad9aff4369dbae"
+        },
+        {
+          "Key": "published",
+          "Value": "True"
+        },
+        {
+          "Key": "uuid",
+          "Value": "4bf2bc27-2bea-4302-a716-585c1b811532"
+        },
+        {
+          "Key": "attribute_count",
+          "Value": "14"
+        },
+        {
+          "Key": "analysis",
+          "Value": "2"
+        },
+        {
+          "Key": "timestamp",
+          "Value": "1601941085"
+        },
+        {
+          "Key": "distribution",
+          "Value": "3"
+        },
+        {
+          "Key": "proposal_email_lock",
+          "Value": "False"
+        },
+        {
+          "Key": "locked",
+          "Value": "True"
+        },
+        {
+          "Key": "publish_timestamp",
+          "Value": "1601941026"
+        },
+        {
+          "Key": "sharing_group_id",
+          "Value": "0"
+        },
+        {
+          "Key": "disable_correlation",
+          "Value": "False"
+        },
+        {
+          "Key": "extends_uuid",
+          "Value": ""
+        },
+        {
+          "Key": "Org_id",
+          "Value": "1368"
+        },
+        {
+          "Key": "Org_name",
+          "Value": "btgpactual.com"
+        },
+        {
+          "Key": "Org_uuid",
+          "Value": "5de915cb-c424-487d-b755-088f0ac1fc38"
+        },
+        {
+          "Key": "Org_local",
+          "Value": "True"
+        },
+        {
+          "Key": "Orgc_id",
+          "Value": "1395"
+        },
+        {
+          "Key": "Orgc_name",
+          "Value": "CERT.br_3997"
+        },
+        {
+          "Key": "Orgc_uuid",
+          "Value": "5d63c900-793c-45cf-8bc6-d7f0c8a0070e"
+        },
+        {
+          "Key": "Orgc_local",
+          "Value": "False"
+        },
+        {
+          "Key": "Tag_1_id",
+          "Value": "3"
+        },
+        {
+          "Key": "Tag_1_name",
+          "Value": "tlp:amber"
+        },
+        {
+          "Key": "Tag_1_colour",
+          "Value": "#FFC000"
+        },
+        {
+          "Key": "Tag_1_exportable",
+          "Value": "True"
+        },
+        {
+          "Key": "Tag_1_hide_tag",
+          "Value": "False"
+        },
+        {
+          "Key": "Tag_1_user_id",
+          "Value": "0"
+        },
+        {
+          "Key": "Tag_1_numerical_value",
+          "Value": ""
+        },
+        {
+          "Key": "Tag_1_local",
+          "Value": "0"
+        },
+        {
+          "Key": "Tag_2_id",
+          "Value": "4443"
+        },
+        {
+          "Key": "Tag_2_name",
+          "Value": "misp-galaxy:mitre-attack-pattern=\"Exploit Public-Facing Application - T1190\""
+        },
+        {
+          "Key": "Tag_2_colour",
+          "Value": "#0088cc"
+        },
+        {
+          "Key": "Tag_2_exportable",
+          "Value": "True"
+        },
+        {
+          "Key": "Tag_2_hide_tag",
+          "Value": "False"
+        },
+        {
+          "Key": "Tag_2_user_id",
+          "Value": "0"
+        },
+        {
+          "Key": "Tag_2_numerical_value",
+          "Value": ""
+        },
+        {
+          "Key": "Tag_2_local",
+          "Value": "0"
+        },
+        {
+          "Key": "Tag_3_id",
+          "Value": "4440"
+        },
+        {
+          "Key": "Tag_3_name",
+          "Value": "misp-galaxy:mitre-attack-pattern=\"Custom Command and Control Protocol - T1094\""
+        },
+        {
+          "Key": "Tag_3_colour",
+          "Value": "#0088cc"
+        },
+        {
+          "Key": "Tag_3_exportable",
+          "Value": "True"
+        },
+        {
+          "Key": "Tag_3_hide_tag",
+          "Value": "False"
+        },
+        {
+          "Key": "Tag_3_user_id",
+          "Value": "0"
+        },
+        {
+          "Key": "Tag_3_numerical_value",
+          "Value": ""
+        },
+        {
+          "Key": "Tag_3_local",
+          "Value": "0"
+        },
+        {
+          "Key": "Tag_4_id",
+          "Value": "45"
+        },
+        {
+          "Key": "Tag_4_name",
+          "Value": "ecsirt:malicious-code=\"malware\""
+        },
+        {
+          "Key": "Tag_4_colour",
+          "Value": "#006262"
+        },
+        {
+          "Key": "Tag_4_exportable",
+          "Value": "True"
+        },
+        {
+          "Key": "Tag_4_hide_tag",
+          "Value": "False"
+        },
+        {
+          "Key": "Tag_4_user_id",
+          "Value": "0"
+        },
+        {
+          "Key": "Tag_4_numerical_value",
+          "Value": ""
+        },
+        {
+          "Key": "Tag_4_local",
+          "Value": "0"
+        }
+      ],
+      "Attachments": []
+    }
+  ],
+  "IsTestCase": false,
+  "DebugOutput": null,
+  "ConnectorIdentifier": null
+}

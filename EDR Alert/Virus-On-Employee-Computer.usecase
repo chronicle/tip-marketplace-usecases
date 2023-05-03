@@ -1,0 +1,86 @@
+{
+  "Identifier": "8c8484ff-2b96-488f-8156-de52d01c4e35",
+  "MinimumSystemVersion": 0.0,
+  "CreationTimeInUnixtime": "1613050155867",
+  "Version": 0.0,
+  "Order": 0,
+  "Name": "Vulnerable Host Detected",
+  "ShortDescription": "Basic playbook for handling an EDR alert detecting a potential malicious process on an employee computer. Includes investigation and response blocks.",
+  "Description": "<p>Basic playbook for handling an EDR alert detecting a potential malicious process on an employee computer. Includes investigation and response blocks.</p>",
+  "VideoLink": "https://www.youtube.com/embed/b5LscsFh-lQ",
+  "UpdaterFullName": "Siemplify Admin",
+  "IsAvailableForCommunity": true,
+  "NonMandatoryIntegrations": [
+    "VirusTotal",
+    "EmailV2",
+    "ActiveDirectory",
+    "CBCloud",
+    "SiemplifyThreatFuse"
+  ],
+  "UpdaterEmail": "elena.lovkova@siemplify.co",
+  "Downloads": 0,
+  "UpdaterImageBase64": "",
+  "PublishComment": null,
+  "Categories": [
+    "Endpoint"
+  ],
+  "Tags": [],
+  "CategorySvgImage": null,
+  "Playbooks": [
+    "EDR-Alert---Investigation-and-Response",
+    "ActiveDirectory-User-Enrichment",
+    "Escalation-block",
+    "CB-Response-block",
+    "ThreatFuse-Triage-block"
+  ],
+  "CommercialIntegrations": [
+    {
+      "Identifier": "Siemplify",
+      "Version": 51.0
+    },
+    {
+      "Identifier": "VirusTotal",
+      "Version": 31.0
+    },
+    {
+      "Identifier": "SiemplifyUtilities",
+      "Version": 9.0
+    },
+    {
+      "Identifier": "EmailV2",
+      "Version": 11.0
+    },
+    {
+      "Identifier": "ActiveDirectory",
+      "Version": 28.0
+    },
+    {
+      "Identifier": "CBCloud",
+      "Version": 4.0
+    },
+    {
+      "Identifier": "SiemplifyThreatFuse",
+      "Version": 1.0
+    }
+  ],
+  "Integrations": [
+    "Siemplify",
+    "VirusTotal",
+    "SiemplifyUtilities",
+    "EmailV2",
+    "ActiveDirectory",
+    "CBCloud",
+    "SiemplifyThreatFuse"
+  ],
+  "Connectors": [],
+  "InstalledConnectors": [],
+  "TestCases": [
+    {
+      "CaseTitle": "Carbon Black - Simulation Case"
+    }
+  ],
+  "GalleryImageBase64": null,
+  "GalleryOrder": -1,
+  "IsRecommended": false,
+  "IsLocal": true
+}

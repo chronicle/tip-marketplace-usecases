@@ -1,0 +1,55 @@
+{
+  "Name": "Get Group",
+  "Description": "Get group information by group name.",
+  "Script": "from SiemplifyUtils import output_handler\nfrom SiemplifyAction import SiemplifyAction\nfrom SentinelOneV2Manager import SentinelOneV2Manager\nfrom SiemplifyUtils import construct_csv, convert_dict_to_json_result_dict\nfrom TIPCommon import extract_configuration_param, extract_action_param\n\n# Consts.\nINTEGRATION_NAME = u'SentinelOneV2'\nSCRIPT_NAME = u'Get Group'\n\n\n@output_handler\ndef main():\n    # Configuration.\n    siemplify = SiemplifyAction()\n    siemplify.script_name = u\"{} - {}\".format(INTEGRATION_NAME, SCRIPT_NAME)\n    siemplify.LOGGER.info(u\"================= Main - Param Init =================\")\n    json_results = {'groups': []}\n    result_value = False\n\n    api_root = extract_configuration_param(siemplify, provider_name=INTEGRATION_NAME, param_name=u\"Api Root\",\n                                           is_mandatory=True, input_type=unicode)\n    api_token = extract_configuration_param(siemplify, provider_name=INTEGRATION_NAME, param_name=u\"API Token\",\n                                            is_mandatory=True, input_type=unicode)\n    verify_ssl = extract_configuration_param(siemplify, provider_name=INTEGRATION_NAME, param_name=u\"Verify SSL\",\n                                             default_value=False, input_type=bool)\n\n    group_name = extract_action_param(siemplify, param_name=u\"Group Name\", is_mandatory=False, input_type=unicode,\n                                      print_value=True)\n    search = extract_action_param(siemplify, param_name=u\"Search\", input_type=bool,\n                                  print_value=True)\n\n    siemplify.LOGGER.info(u\"----------------- Main - Started -----------------\")\n\n    sentinel_one_manager = SentinelOneV2Manager(api_root, api_token, verify_ssl)\n\n    # Get system status.\n    siemplify.LOGGER.info(u\"Fetching group information\")\n    group_info = sentinel_one_manager.get_group(group_name, search)\n    for group in group_info:\n        json_results['groups'].append(group.to_json())\n        \n    if group_info:\n        siemplify.result.add_data_table(u'Group Information',\n                                        construct_csv([group.to_csv() for group in group_info]))\n        # Form output message.\n        siemplify.result.add_result_json(json_results)\n        output_message = u'Group Found'\n        result_value = True\n    else:\n        output_message = u'Group was not found.'\n\n    siemplify.LOGGER.info(output_message)\n    siemplify.end(output_message, result_value)\n\n\nif __name__ == '__main__':\n    main()\n",
+  "IntegrationIdentifier": "SentinelOneV2",
+  "ScriptResultName": "is_success",
+  "DynamicResultsMetadata": [
+    {
+      "ResultName": "JsonResult",
+      "ResultExample": "{\n  \"groups\": [\n    {\n      \"inherits\": true,\n      \"name\": \"Test Group\",\n      \"creator\": \"Daniel D\",\n      \"filterName\": null,\n      \"updatedAt\": \"2020-04-17T16:13:26.088106Z\",\n      \"filterId\": null,\n      \"rank\": null,\n      \"registrationToken\": \"eyJ1cmwiOiAiaHR0cHM6Ly91c2VhMS1wYXJ0bmVycy5zZW50aW5lbG9uZS5uZXQiLCAic2l0ZV9rZXkiOiAiZ19iYTliNGRjODUwMzMzZWVkIn0=\",\n      \"siteId\": \"823740645903492137\",\n      \"isDefault\": false,\n      \"creatorId\": \"823742048604578975\",\n      \"totalAgents\": 0,\n      \"type\": \"static\",\n      \"id\": \"863712577864500060\",\n      \"createdAt\": \"2020-04-06T16:42:42.782927Z\"\n    }\n  ]\n}",
+      "ShowResult": true
+    }
+  ],
+  "Creator": "Admin",
+  "IsEnabled": true,
+  "IsCustom": true,
+  "IsSystem": false,
+  "Version": 31.0,
+  "TimeoutSeconds": 600,
+  "Parameters": [
+    {
+      "CustomActionId": 0,
+      "IsMandatory": false,
+      "DefaultValue": "Test",
+      "Description": null,
+      "Name": "Group Name",
+      "Value": "Test",
+      "Type": 0,
+      "OptionalValues": null,
+      "OptionalValuesJson": null,
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1590908125687,
+      "ModificationTimeUnixTimeInMs": 1590908125687
+    },
+    {
+      "CustomActionId": 0,
+      "IsMandatory": false,
+      "DefaultValue": "true",
+      "Description": null,
+      "Name": "Search",
+      "Value": "true",
+      "Type": 1,
+      "OptionalValues": null,
+      "OptionalValuesJson": null,
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1590908125687,
+      "ModificationTimeUnixTimeInMs": 1590908125687
+    }
+  ],
+  "DefaultResultValue": null,
+  "PythonVersion": "None",
+  "Id": 0,
+  "CreationTimeUnixTimeInMs": 1588021981957,
+  "ModificationTimeUnixTimeInMs": 1590908125681
+}

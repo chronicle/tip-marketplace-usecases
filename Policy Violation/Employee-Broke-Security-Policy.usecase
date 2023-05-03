@@ -1,0 +1,66 @@
+{
+  "Identifier": "db8394ad-c6ba-49c6-bc0a-ec2f6a734e50",
+  "MinimumSystemVersion": 0.0,
+  "CreationTimeInUnixtime": "1612172434727",
+  "Version": 0.0,
+  "Order": 0,
+  "Name": "Employee Violated Security Policy",
+  "ShortDescription": "A multi-purpose playbook to handle policy violations and communication with the user and management.Contains a sample alert for use case demonstration, a playbook and a reusable block.",
+  "Description": "<p>A multi-purpose playbook to handle policy violations and communication with the user and management.Contains a sample alert for use case demonstration, a playbook and a reusable block.</p>",
+  "VideoLink": "https://www.youtube.com/embed/ElWqeffg_AA",
+  "UpdaterFullName": "Siemplify Admin",
+  "IsAvailableForCommunity": true,
+  "NonMandatoryIntegrations": [
+    "AzureActiveDirectory",
+    "Slack"
+  ],
+  "UpdaterEmail": "elena.lovkova@siemplify.co",
+  "Downloads": 0,
+  "UpdaterImageBase64": "",
+  "PublishComment": null,
+  "Categories": [
+    "Endpoint",
+    "Management"
+  ],
+  "Tags": [],
+  "CategorySvgImage": null,
+  "Playbooks": [
+    "Policy-Violation",
+    "Communication-Block"
+  ],
+  "CommercialIntegrations": [
+    {
+      "Identifier": "Siemplify",
+      "Version": 50.0
+    },
+    {
+      "Identifier": "AzureActiveDirectory",
+      "Version": 6.0
+    },
+    {
+      "Identifier": "EmailV2",
+      "Version": 11.0
+    },
+    {
+      "Identifier": "Slack",
+      "Version": 16.0
+    }
+  ],
+  "Integrations": [
+    "Siemplify",
+    "AzureActiveDirectory",
+    "EmailV2",
+    "Slack"
+  ],
+  "Connectors": [],
+  "InstalledConnectors": [],
+  "TestCases": [
+    {
+      "CaseTitle": "Policy Violation - Executable in Downloads Folder"
+    }
+  ],
+  "GalleryImageBase64": null,
+  "GalleryOrder": -1,
+  "IsRecommended": false,
+  "IsLocal": true
+}

@@ -1,0 +1,76 @@
+{
+  "Cases": [
+    {
+      "Events": [
+        {
+          "_fields": {
+            "BaseEventIds": [],
+            "ParentEventId": 0,
+            "DeviceEventClassId": "ExecutableDetected",
+            "StartTime": "1613759253904",
+            "EndTime": "1613759253904",
+            "DeviceProduct": "CrowdStrike -  Simulation - ExecutableDetected"
+          },
+          "_rawDataFields": {
+            "hostname": "CROWDSTRIKE-H01",
+            "filepath": "\\Device\\HarddiskVolume2\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "local_ip": "172.30.202.33",
+            "ioc_description": "\\Device\\HarddiskVolume2\\Windows\\System32\\",
+            "mac_address": "00-50-56-A2-5D-A3",
+            "ioc_value": "604cdf637c64c8862b506caa60d1a66b02f97127dc265c6943cadd126fc32f14",
+            "external_ip": "185.180.102.139",
+            "filename": "reg.exe",
+            "device_id": "77aefb45-67b0-11eb-a01a-069e2f89a433",
+            "DeviceProduct": "CrowdStrike -  Simulation - ExecutableDetected",
+            "Name": "ExecutableDetected",
+            "first_seen": "2021-01-12T16:01:43Z",
+            "last_seen": "2021-01-12T16:17:21Z",
+            "os_version": "Windows 10",
+            "product_type_desc": "Workstation",
+            "timestamp": "2021-01-12T16:17:19Z",
+            "alleged_filetype": "exe",
+            "ioc_type": "hash_sha256",
+            "user_name": "Admin",
+            "user_id": "77aefc04-67b0-11eb-a01a-069e2f89a433",
+            "sha256": "604cdf637c64c8862b506caa60d1a66b02f97127dc265c6943cadd126fc32f14",
+            "md5": "05cf3ce225b05b669e3118092f4c8eab",
+            "parent_sha256": "d0ceb18272966ab62b8edff100e9b4a6a3cb5dc0f2a32b2b18721fea2d9c09a5",
+            "parent_md5": "9d59442313565c2e0860b88bf32b2277",
+            "parent_cmdline": "C:\\\\Windows\\\\system32\\\\cmd.exe /c \\\"\\\"C:\\\\Users\\\\Admin\\\\Desktop\\\\APTSimulator-master\\\\APTSimulator-master\\\\APTSimulator.bat\\\" \\\"",
+            "max_confidence": "80",
+            "max_severity": "70",
+            "DeviceEventClassId": "ExecutableDetected"
+          },
+          "Environment": null,
+          "SourceSystemName": null
+        }
+      ],
+      "Environment": null,
+      "SourceSystemName": "CrowdStrike Falcon",
+      "TicketId": null,
+      "Description": null,
+      "DisplayId": null,
+      "Reason": null,
+      "Name": "Execution via Scripting Detected",
+      "DeviceVendor": "CrowdStrike -  Simulation - ExecutableDetected",
+      "DeviceProduct": "CrowdStrike -  Simulation - ExecutableDetected",
+      "StartTime": 1613759253904,
+      "EndTime": 1613759253904,
+      "IsTestCase": true,
+      "Priority": 0,
+      "RuleGenerator": "ExecutableDetected",
+      "SourceGroupingIdentifier": null,
+      "PlaybookTriggerKeywords": [],
+      "Extensions": [
+        {
+          "Key": "Description",
+          "Value": "A script launched that appears to be related to a reverse shell established with a remote system. Review the script and investigate the process tree."
+        }
+      ],
+      "Attachments": null
+    }
+  ],
+  "IsTestCase": true,
+  "DebugOutput": null,
+  "ConnectorIdentifier": null
+}

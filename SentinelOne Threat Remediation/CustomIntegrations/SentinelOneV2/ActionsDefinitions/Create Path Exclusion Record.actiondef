@@ -1,0 +1,49 @@
+{
+  "Name": "Create Path Exclusion Record",
+  "Description": "Create a new path exclusion record.",
+  "Script": "from SiemplifyUtils import output_handler\nfrom SiemplifyAction import SiemplifyAction\nfrom ScriptResult import EXECUTION_STATE_COMPLETED, EXECUTION_STATE_FAILED\nfrom SentinelOneV2Manager import SentinelOneV2Manager\nfrom TIPCommon import extract_configuration_param, extract_action_param\n\n\nINTEGRATION_NAME = u'SentinelOneV2'\nSCRIPT_NAME = u'Create Path Exclusion Record'\n\n\n@output_handler\ndef main():\n    siemplify = SiemplifyAction()\n    siemplify.script_name = u\"{} - {}\".format(INTEGRATION_NAME, SCRIPT_NAME)\n    siemplify.LOGGER.info(u\"================= Main - Param Init =================\")\n\n    api_root = extract_configuration_param(siemplify, provider_name=INTEGRATION_NAME, param_name=u\"Api Root\",\n                                           is_mandatory=True, input_type=unicode)\n    api_token = extract_configuration_param(siemplify, provider_name=INTEGRATION_NAME, param_name=u\"API Token\",\n                                            is_mandatory=True, input_type=unicode)\n    verify_ssl = extract_configuration_param(siemplify, provider_name=INTEGRATION_NAME, param_name=u\"Verify SSL\",\n                                             default_value=False, input_type=bool)\n\n    file_directory = extract_action_param(siemplify, param_name=u\"Path\", is_mandatory=True, input_type=unicode,\n                                          print_value=True)\n    operation_system = extract_action_param(siemplify, param_name=u\"Operation System\", is_mandatory=True,\n                                            input_type=unicode, print_value=True)\n\n    siemplify.LOGGER.info(u\"----------------- Main - Started -----------------\")\n\n    try:\n        sentinel_one_manager = SentinelOneV2Manager(api_root, api_token, verify_ssl)\n        sentinel_one_manager.create_path_exclusion(path=file_directory, os_type=operation_system)\n        output_message = u'Created path exclusion record for path: \"{0}\"'.format(file_directory)\n        siemplify.LOGGER.info(output_message)\n        status = EXECUTION_STATE_COMPLETED\n        result_value = u'true'\n\n    except Exception as e:\n        siemplify.LOGGER.error(u\"Action didn't complete due to error: {}\".format(e))\n        siemplify.LOGGER.exception(e)\n        status = EXECUTION_STATE_FAILED\n        result_value = u\"false\"\n        output_message = u\"Action didn't complete due to error: {}\".format(e)\n\n    siemplify.LOGGER.info(u\"----------------- Main - Finished -----------------\")\n    siemplify.LOGGER.info(u\"Status: {}:\".format(status))\n    siemplify.LOGGER.info(u\"Result Value: {}\".format(result_value))\n    siemplify.LOGGER.info(u\"Output Message: {}\".format(output_message))\n    siemplify.end(output_message, result_value, status)\n\n\nif __name__ == '__main__':\n    main()\n",
+  "IntegrationIdentifier": "SentinelOneV2",
+  "ScriptResultName": "is_success",
+  "DynamicResultsMetadata": null,
+  "Creator": "Admin",
+  "IsEnabled": true,
+  "IsCustom": true,
+  "IsSystem": false,
+  "Version": 4.0,
+  "TimeoutSeconds": 600,
+  "Parameters": [
+    {
+      "CustomActionId": 0,
+      "IsMandatory": true,
+      "DefaultValue": "",
+      "Description": "Can be windows, windows_legacy, macos or linux.",
+      "Name": "Operation System",
+      "Value": "",
+      "Type": 0,
+      "OptionalValues": null,
+      "OptionalValuesJson": null,
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1590908125594,
+      "ModificationTimeUnixTimeInMs": 1590908125594
+    },
+    {
+      "CustomActionId": 0,
+      "IsMandatory": true,
+      "DefaultValue": "",
+      "Description": "Target file path.",
+      "Name": "Path",
+      "Value": "",
+      "Type": 0,
+      "OptionalValues": null,
+      "OptionalValuesJson": null,
+      "Id": 0,
+      "CreationTimeUnixTimeInMs": 1590908125594,
+      "ModificationTimeUnixTimeInMs": 1590908125594
+    }
+  ],
+  "DefaultResultValue": null,
+  "PythonVersion": "None",
+  "Id": 0,
+  "CreationTimeUnixTimeInMs": 1588021981931,
+  "ModificationTimeUnixTimeInMs": 1590908125588
+}

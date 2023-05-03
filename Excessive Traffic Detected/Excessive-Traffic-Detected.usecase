@@ -1,0 +1,63 @@
+{
+  "Identifier": "ae0635b7-66e7-4729-bd6e-db8abc8ec1c8",
+  "CreationTimeInUnixtime": "1587226057515",
+  "Order": 0,
+  "Name": "Potential DDOS",
+  "ShortDescription": "This solution helps analysts investigate excessive traffic detections. Playbook checks IP reputation across multiple sources, identifies traffic direction and finds technique details in MITRE.",
+  "Description": "This solution helps analysts investigate excessive traffic detections. Playbook checks IP reputation across multiple sources, identifies traffic direction and finds technique details in MITRE.",
+  "VideoLink": null,
+  "UpdaterFullName": "CommunityUser",
+  "UpdaterEmail": "elena.lovkova@siemplify.co",
+  "UpdaterImageBase64": null,
+  "Categories": [
+    "Network"
+  ],
+  "Tags": [],
+  "CategorySvgImage": null,
+  "Playbooks": [
+    "High-count-of-traffic-detected"
+  ],
+  "CommercialIntegrations": [
+    {
+      "Identifier": "BulkWhoIs",
+      "Version": 10.0
+    },
+    {
+      "Identifier": "Siemplify",
+      "Version": 32.0
+    },
+    {
+      "Identifier": "EmailV2",
+      "Version": 3.0
+    },
+    {
+      "Identifier": "MitreAttck",
+      "Version": 3.0
+    },
+    {
+      "Identifier": "APIVoid",
+      "Version": 4.0
+    },
+    {
+      "Identifier": "VirusTotal",
+      "Version": 21.0
+    }
+  ],
+  "Integrations": [
+    "BulkWhoIs",
+    "Siemplify",
+    "EmailV2",
+    "MitreAttck",
+    "APIVoid",
+    "VirusTotal"
+  ],
+  "Connectors": [],
+  "TestCases": [
+    {
+      "CaseTitle": "High count of traffic detected (inbound)"
+    },
+    {
+      "CaseTitle": "High count of traffic detected (outbound)"
+    }
+  ]
+}

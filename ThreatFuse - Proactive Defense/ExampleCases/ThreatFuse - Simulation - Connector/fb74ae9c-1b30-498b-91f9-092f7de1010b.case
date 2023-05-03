@@ -1,0 +1,49 @@
+{
+  "Cases": [
+    {
+      "Events": [
+        {
+          "_fields": {
+            "BaseEventIds": [],
+            "ParentEventId": 0,
+            "DeviceEventClassId": "ThreatFuse",
+            "StartTime": "1611747086677",
+            "EndTime": "1611747086677",
+            "DeviceProduct": "SIemplify ThreatFuse Connector"
+          },
+          "_rawDataFields": {
+            "FileSHA1": "46930ec6d7ddf5fc7dc7e08fe5ec4bf6",
+            "DeviceProduct": "SIemplify ThreatFuse Connector",
+            "Name": "ThreatFuse Triage - Simulation - Connector",
+            "ip": "91.195.240.87",
+            "url": "https://172.30.203.36/#/main/entity-explorer/HTTPS:%2F%2FWWW.EXPROOFPOINT.COM%2FCNPP%2FNFCCA.PHP/Default%20Environment",
+            "DeviceEventClassId": "ThreatFuse - Simulation - Connector"
+          },
+          "Environment": null,
+          "SourceSystemName": null
+        }
+      ],
+      "Environment": null,
+      "SourceSystemName": "SIemplify ThreatFuse Connector",
+      "TicketId": null,
+      "Description": null,
+      "DisplayId": null,
+      "Reason": null,
+      "Name": "ThreatFuse - Simulation - Connector",
+      "DeviceVendor": "SIemplify ThreatFuse Connector",
+      "DeviceProduct": "SIemplify ThreatFuse Connector",
+      "StartTime": 1611747086677,
+      "EndTime": 1611747086677,
+      "IsTestCase": true,
+      "Priority": 0,
+      "RuleGenerator": "ThreatFuse",
+      "SourceGroupingIdentifier": null,
+      "PlaybookTriggerKeywords": [],
+      "Extensions": [],
+      "Attachments": null
+    }
+  ],
+  "IsTestCase": true,
+  "DebugOutput": null,
+  "ConnectorIdentifier": null
+}

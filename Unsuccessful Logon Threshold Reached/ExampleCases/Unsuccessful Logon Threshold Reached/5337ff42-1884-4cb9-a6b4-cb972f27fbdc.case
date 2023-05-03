@@ -1,0 +1,81 @@
+{
+  "Cases": [
+    {
+      "Events": [
+        {
+          "_fields": {
+            "BaseEventIds": [],
+            "ParentEventId": 0,
+            "DeviceEventClassId": "Brute Force Logon Attack Start",
+            "StartTime": "1612546255090",
+            "EndTime": "1612546255090",
+            "DeviceProduct": "Brute Force - Simulation - ArcSight"
+          },
+          "_rawDataFields": {
+            "Event_ID": "4625",
+            "Logon_Process": "Winlogon",
+            "Logon_Type": "3",
+            "Account_Name": "UseCasesTest",
+            "Account_Domain": "CORP",
+            "UserSID": "S-1-5-21-1559775128-62669255-1053239976-500",
+            "Failure_Reason": "0xC000006A",
+            "Source_Network_Address": "91.195.240.87",
+            "DeviceProduct": "Arcsight - Aggregation Ruleset",
+            "Name": "An account failed to log on",
+            "Destination_Network_Address": "10.4.12.65",
+            "Destination_Hostname": "EVERGREEN01",
+            "DeviceEventClassId": "An account failed to log on"
+          },
+          "Environment": null,
+          "SourceSystemName": null
+        }
+      ],
+      "Environment": null,
+      "SourceSystemName": "ArcSight--Aggregation",
+      "TicketId": null,
+      "Description": null,
+      "DisplayId": null,
+      "Reason": null,
+      "Name": "Unsuccessful Logon Threshold Reached",
+      "DeviceVendor": "Brute Force - Simulation - ArcSight",
+      "DeviceProduct": "Brute Force - Simulation - ArcSight",
+      "StartTime": 1612546255090,
+      "EndTime": 1612546255090,
+      "IsTestCase": true,
+      "Priority": 0,
+      "RuleGenerator": "Brute Force Logon Attack Start",
+      "SourceGroupingIdentifier": null,
+      "PlaybookTriggerKeywords": [],
+      "Extensions": [
+        {
+          "Key": "Priority",
+          "Value": "1"
+        },
+        {
+          "Key": "Manager_Receipt_Time",
+          "Value": "18 Feb 2020 18:30:10 UTC"
+        },
+        {
+          "Key": "Event_End_Time",
+          "Value": "18 Feb 2020 18:28:45 UTC"
+        },
+        {
+          "Key": "Source_Address",
+          "Value": "10.4.0.5"
+        },
+        {
+          "Key": "Destination_User_Name",
+          "Value": "UseCasesTest"
+        },
+        {
+          "Key": "Unsuccessful Logon Threshold Reached",
+          "Value": "0F"
+        }
+      ],
+      "Attachments": null
+    }
+  ],
+  "IsTestCase": true,
+  "DebugOutput": null,
+  "ConnectorIdentifier": null
+}

@@ -1,0 +1,75 @@
+{
+  "Identifier": "8ebce0bc-29c3-4938-bd6f-100e73cb867a",
+  "MinimumSystemVersion": 0.0,
+  "CreationTimeInUnixtime": "1611752954879",
+  "Version": 0.0,
+  "Order": 0,
+  "Name": "ThreatFuse - Proactive Defense",
+  "ShortDescription": "This Use Case provides a proactive response to new malicious indicators ingested from ThreatFuse. Has Connector and a Playbook for response and investigation.",
+  "Description": "<p>Siemplify automation adds new indicators to firewall blocklists, checks if any hosts in your organization interacted with them, and raises an incident if a threat is found. Playbook is running in the background with minimal involvement of an analyst.</p>",
+  "VideoLink": "https://www.youtube.com/embed/K-ykG2Ob-nc",
+  "UpdaterFullName": "Siemplify Admin",
+  "IsAvailableForCommunity": true,
+  "NonMandatoryIntegrations": [
+    "SentinelOneV2",
+    "CheckPointFirewall"
+  ],
+  "UpdaterEmail": "elena.lovkova@siemplify.co",
+  "Downloads": 0,
+  "UpdaterImageBase64": "",
+  "PublishComment": null,
+  "Categories": [
+    "Threat Hunting"
+  ],
+  "Tags": [],
+  "CategorySvgImage": null,
+  "Playbooks": [
+    "ThreatFuse---Proactive-Defense",
+    "TF-URL-investigation-block",
+    "Response-block",
+    "TF-HASH-investigation-block",
+    "Escalation-block"
+  ],
+  "CommercialIntegrations": [
+    {
+      "Identifier": "Siemplify",
+      "Version": 50.0
+    },
+    {
+      "Identifier": "SentinelOneV2",
+      "Version": 15.0
+    },
+    {
+      "Identifier": "SiemplifyUtilities",
+      "Version": 9.0
+    },
+    {
+      "Identifier": "SiemplifyThreatFuse",
+      "Version": 1.0
+    },
+    {
+      "Identifier": "CheckPointFirewall",
+      "Version": 7.0
+    }
+  ],
+  "Integrations": [
+    "Siemplify",
+    "SentinelOneV2",
+    "SiemplifyUtilities",
+    "SiemplifyThreatFuse",
+    "CheckPointFirewall"
+  ],
+  "Connectors": [
+    "Siemplify ThreatFuse - Observables Connector"
+  ],
+  "InstalledConnectors": [],
+  "TestCases": [
+    {
+      "CaseTitle": "ThreatFuse - Simulation - Connector"
+    }
+  ],
+  "GalleryImageBase64": null,
+  "GalleryOrder": -1,
+  "IsRecommended": true,
+  "IsLocal": true
+}

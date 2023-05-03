@@ -1,0 +1,62 @@
+{
+  "Identifier": "370c973d-b490-478f-9044-c9663d16ff6d",
+  "MinimumSystemVersion": 0.0,
+  "CreationTimeInUnixtime": "1620893874332",
+  "Version": 1.0,
+  "Order": 0,
+  "Name": "Logz.io Indicator Hunting",
+  "ShortDescription": null,
+  "Description": "<p>Automating indicator hunting investigation by querying your&nbsp;<a href=\"http://logz.io/\">Logz.io</a> account.For full playbook and integration doc click  <a href=\"https://docs.logz.io/user-guide/cloud-siem/integration/siemplify/\">here</a> &nbsp;</p>",  "VideoLink": null,
+  "UpdaterFullName": "Logzio",
+  "IsAvailableForCommunity": true,
+  "NonMandatoryIntegrations": [],
+  "UpdaterEmail": "dor.naaman@logz.io",
+  "Downloads": 0,
+  "UpdaterImageBase64": "",
+  "PublishComment": null,
+  "Categories": [
+    "Threat Hunting",
+    "Investigation"
+  ],
+  "Tags": [],
+  "CategorySvgImage": null,
+  "Playbooks": [
+    "Logzio-Indicator-Hunting",
+    "Domain_initialize_block",
+    "IP_Initialize_Block",
+    "Hash_Initialize_Block",
+    "URL_Initialize_Block"
+  ],
+  "CommercialIntegrations": [
+    {
+      "Identifier": "Tools",
+      "Version": 9.0
+    },
+    {
+      "Identifier": "Logzio",
+      "Version": 1.0
+    },
+    {
+      "Identifier": "Siemplify",
+      "Version": 50.0
+    }
+  ],
+  "Integrations": [
+    "Tools",
+    "Logzio",
+    "Siemplify"
+  ],
+  "Connectors": [],
+  "InstalledConnectors": [
+    "LOGZIO fetch-security-events"
+  ],
+  "TestCases": [
+    {
+      "CaseTitle": "[TEST] SentinelOne - Malware detected"
+    }
+  ],
+  "GalleryImageBase64": null,
+  "GalleryOrder": -1,
+  "IsRecommended": false,
+  "IsLocal": true
+}
